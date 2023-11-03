@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../database.db"
+}
+
+model Category {
+  id        String    @id @unique @default(uuid())
+  name      String    @unique
+  companies Company[]
+
+  @@map("categories")
+}
+
+model Company {
+  id          String       @id @unique @default(uuid())
+  name        String       @unique
+  description String
+  category    Category     @relation(fields: [category_id], references: [id], onDelete: Cascade)
+  category_id String
+  departments Department[]
+  employees   Employee[]
+
+  @@map("companies")
+}
+
+model Department {
+  id          String     @id @unique @default(uuid())
+  name        String
+  description String
+  company     Company    @relation(fields: [company_id], references: [id], onDelete: Cascade)
+  company_id  String
+  employees   Employee[]
+
+  @@map("departments")
+}
+
+model Employee {
+  id            String      @id @unique @default(uuid())
+  name          String
+  email         String      @unique
+  password      String
+  is_admin      Boolean     @default(false)
+  company       Company?    @relation(references: [id], fields: [company_id], onDelete: Cascade)
+  company_id    String?
+  department    Department? @relation(fields: [department_id], references: [id], onDelete: SetNull)
+  department_id String?
+
+  @@map("employees")
+}

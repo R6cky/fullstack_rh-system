@@ -1,0 +1,1181 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Kenzie Empresas",
+    "description": "API para a execusão do projeto individual do M2",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333"
+    }
+  ],
+  "paths": {
+    "/categories/readAll": {
+      "get": {
+        "description": "Rota responsável por listar todos os setores cadastrados no sistema",
+        "tags": ["Rotas sem autenticação"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                },
+                "examples": {
+                  "response": {
+                    "value": [
+                      {
+                        "id": "042cd7ac-c6fa-464b-88b3-51a2c3fb2e7c",
+                        "name": "Alimenticio"
+                      },
+                      {
+                        "id": "f0fe33d7-b78b-47de-859f-f74ee08ced52",
+                        "name": "Varejo"
+                      },
+                      {
+                        "id": "2fb07a07-c9f5-4427-b4e0-2330add177a9",
+                        "name": "Textil"
+                      },
+                      {
+                        "id": "9b41ddcf-a4bd-4f48-a6c5-32f2abb3b3dc",
+                        "name": "Manufatura"
+                      },
+                      {
+                        "id": "62de3b6f-bba4-4bc5-af6e-fb30b4356bf3",
+                        "name": "Aeroespacial"
+                      },
+                      {
+                        "id": "980fc603-8915-41e0-9240-0c8c3b024c3d",
+                        "name": "Automotiva"
+                      },
+                      {
+                        "id": "3854e74a-0a96-43dd-b44b-f884c08ff3a1",
+                        "name": "TI"
+                      },
+                      {
+                        "id": "f38dad57-0f16-4bd5-86e5-c3a7706df623",
+                        "name": "Atacado"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{}]
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "description": "Rota responsável por logar um usuário ao sistema",
+        "tags": ["Rotas sem autenticação"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/login" }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "LoginResponse": {
+                    "value": {
+                      "message": "email ou senha inválidos"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/loginResponse"
+                },
+                "examples": {
+                  "user": {
+                    "value": {
+                      "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODI3MDU5NDAsImV4cCI6MTcxNDI0MTk0MCwic3ViIjoiYTFmMDUzZTYtODdlOS00NzIwLTllZmItZWY1MTAyNTM2NjZiIn0.50LEqgeCPIh70h3OxTBeTBbMQE3D-TYKMj4mEUSTqqI",
+                      "isAdm": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{}]
+      }
+    },
+    "/employees/create": {
+      "post": {
+        "description": "Rota responsável pela criação de um funcionário",
+        "tags": ["Rotas sem autenticação"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/employeesCreate" },
+              "examples": {
+                "user": {
+                  "value": {
+                    "name": "Rafael Jagochitz Bertoldo",
+                    "email": "bertoldo@mail.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "bad request"
+          },
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/employeesResponse"
+                },
+                "examples": {
+                  "user": {
+                    "value": {
+                      "id": "1ead89f5-cb54-4d01-8ca0-cebc346dd543",
+                      "name": "Rafael Jagochitz Bertoldo",
+                      "email": "bertoldo@mail.com",
+                      "company": null,
+                      "department": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{}]
+      }
+    },
+    "/employees/readAll": {
+      "get": {
+        "description": "Rota responsável por listar todos os funcionários cadastrados",
+        "tags": ["Token de Admin"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                },
+                "examples": {
+                  "users": {
+                    "value": [
+                      {
+                        "id": "7f944afc-ce69-43ff-84a5-d3262e3ec3e7",
+                        "name": "Rafael Jagochitz Bertoldo",
+                        "email": "bertoldo@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      },
+                      {
+                        "id": "ce479353-64f5-4e31-9842-e83ae4acfdd1",
+                        "name": "Fernando Feliciano",
+                        "email": "fernando@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      },
+                      {
+                        "id": "983c4576-7da0-4557-bccd-a48ea7358464",
+                        "name": "Victor Costa",
+                        "email": "victor@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      },
+                      {
+                        "id": "a4ef6dcc-d8e8-4dbc-b726-b1ad2c83682a",
+                        "name": "Luiz Fellype",
+                        "email": "luiz@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      },
+                      {
+                        "id": "cf1fa922-29eb-4a1e-b6fc-e2dbf76d370c",
+                        "name": "Pedro Hasler",
+                        "email": "pedro@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/employees/outOfWork": {
+      "get": {
+        "description": "Rota responsável por listar todos os funcionários que ainda não foram contratados para nenhum departamento",
+        "tags": ["Token de Admin"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                },
+                "examples": {
+                  "users": {
+                    "value": [
+                      {
+                        "id": "7f944afc-ce69-43ff-84a5-d3262e3ec3e7",
+                        "name": "Rafael Jagochitz Bertoldo",
+                        "email": "bertoldo@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      },
+                      {
+                        "id": "ce479353-64f5-4e31-9842-e83ae4acfdd1",
+                        "name": "Fernando Feliciano",
+                        "email": "fernando@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      },
+                      {
+                        "id": "983c4576-7da0-4557-bccd-a48ea7358464",
+                        "name": "Victor Costa",
+                        "email": "victor@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      },
+                      {
+                        "id": "a4ef6dcc-d8e8-4dbc-b726-b1ad2c83682a",
+                        "name": "Luiz Fellype",
+                        "email": "luiz@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      },
+                      {
+                        "id": "cf1fa922-29eb-4a1e-b6fc-e2dbf76d370c",
+                        "name": "Pedro Hasler",
+                        "email": "pedro@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/employees/profile": {
+      "get": {
+        "description": "Rota responsável para listar as informações do usuário logado",
+        "tags": ["Funcionários"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "response": {
+                    "value": {
+                      "id": "7f944afc-ce69-43ff-84a5-d3262e3ec3e7",
+                      "name": "Rafael Jagochitz Bertoldo",
+                      "email": "bertoldo@mail.com",
+                      "is_admin": false,
+                      "company_id": null,
+                      "department_id": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/employees/updateEmployee/{employee_id}": {
+      "patch": {
+        "description": "Rota responsável por atualizar as informações de um funcionário",
+        "tags": ["Token de Admin"],
+        "parameters": [
+          {
+            "name": "UUID do funcionário",
+            "in": "query",
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/employeesUpdate"
+              },
+              "examples": {
+                "user": {
+                  "value": {
+                    "name": "Rafael Jagochitz Bertoldo update",
+                    "email": "bertoldo@mail.com.update"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "user": {
+                    "value": {
+                      "id": "63724534-28b0-42e3-9773-4df44eafaba6",
+                      "name": "Rafael Jagochitz Bertoldo update",
+                      "email": "jagochitzqw@mail.com.update",
+                      "is_admin": false,
+                      "company_id": "d1e438dc-6560-49af-bd11-80143113134a",
+                      "department_id": "ae02ef69-edbe-4871-bbeb-1e7bdf739653"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/employees/deleteEmployee/{employee_id}": {
+      "delete": {
+        "description": "Rota responsável por deletar um usuário",
+        "tags": ["Token de Admin"],
+        "parameters": [
+          {
+            "name": "UUID do funcionário",
+            "in": "query",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "response": {
+                    "value": {
+                      "message": "Funcionário deletado com sucesso"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/employees/hireEmployee/{employee_id}": {
+      "patch": {
+        "description": "Rota responsável por contratar um funcionário para um departamento",
+        "tags": ["Token de Admin"],
+        "parameters": [
+          {
+            "name": "UUID do funcionário",
+            "in": "query",
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/employeesHire" },
+              "examples": {
+                "hire": {
+                  "value": {
+                    "department_id": "6c9bee88-0265-42fe-97f5-086c37b71a54"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "hire": {
+                    "value": {
+                      "message": "Funcionário contratado para o departamento Departamento {nome do departamento}",
+                      "employee": {
+                        "id": "58e4ec69-5575-494c-b2ff-6d7d977551f5",
+                        "name": "Rafael Jagochitz Bertoldo",
+                        "email": "jagochitz3@mail.com",
+                        "is_admin": false,
+                        "company_id": "d1e438dc-6560-49af-bd11-80143113134a",
+                        "department_id": "6c9bee88-0265-42fe-97f5-086c37b71a54"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/employees/dismissEmployee/{employee_id}": {
+      "patch": {
+        "description": "Rota responsável por demitir um funcionário de um departamento",
+        "tags": ["Token de Admin"],
+        "parameters": [
+          {
+            "name": "UUID do funcionário",
+            "in": "query",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "dismiss": {
+                    "value": {
+                      "message": "Funcionário demitido com sucesso",
+                      "rest": {
+                        "id": "f99abb01-ccf8-4f86-92ad-4fb1616dfcd9",
+                        "name": "Rafael Jagochitz Bertoldo",
+                        "email": "jagochitzqw@mail.com",
+                        "is_admin": false,
+                        "company_id": null,
+                        "department_id": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/companies/readAll": {
+      "get": {
+        "description": "Rota para listar todas as empresas cadastradas",
+        "tags": ["Rotas sem autenticação"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                },
+                "examples": {
+                  "response": {
+                    "value": [
+                      {
+                        "id": "7f0930dc-d7ef-4dbd-a005-4702020f2da9",
+                        "name": "Gela Guela",
+                        "description": "Sorvetes barateza3",
+                        "category_id": "fb5e8532-6474-4a88-b5e7-7571cc45d0ab"
+                      },
+                      {
+                        "id": "92db42f6-96e1-469b-a683-060b0bd817e8",
+                        "name": "Skina Lanches",
+                        "description": "Podrão de qualidade",
+                        "category_id": "fb5e8532-6474-4a88-b5e7-7571cc45d0ab"
+                      },
+                      {
+                        "id": "86bffcd8-ff51-4b42-8dd2-e60639a3dc13",
+                        "name": "Mercado Kenzie",
+                        "description": "Padrão de qualidade",
+                        "category_id": "cc70ec9f-c182-4906-8b6d-b192dd45fc81"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{}]
+      }
+    },
+    "/companies/readById/{company_id}": {
+      "get": {
+        "description": "Rota responsável por listar uma empresa a partir do id informado",
+        "tags": ["Funcionários"],
+        "parameters": [
+          {
+            "name": "Id da empresa",
+            "description": "Exemplo: Alimenticio"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                },
+                "examples": {
+                  "response": {
+                    "value": {
+                      "id": "7f0930dc-d7ef-4dbd-a005-4702020f2da9",
+                      "name": "Gela Guela",
+                      "description": "Sorvetes barateza3",
+                      "category_id": "fb5e8532-6474-4a88-b5e7-7571cc45d0ab",
+                      "category": {
+                        "id": "fb5e8532-6474-4a88-b5e7-7571cc45d0ab",
+                        "name": "Alimentício"
+                      },
+                      "departments": [],
+                      "employees": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/companies/readByCategory/{category_name}": {
+      "get": {
+        "description": "Rota responsável por listar todas as empresas do setor informado pela URL",
+        "tags": ["Rotas sem autenticação"],
+        "parameters": [
+          {
+            "name": "Nome do setor",
+            "description": "Exemplo: Alimenticio"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                },
+                "examples": {
+                  "response": {
+                    "value": [
+                      {
+                        "id": "86bffcd8-ff51-4b42-8dd2-e60639a3dc13",
+                        "name": "Mercado Kenzie",
+                        "description": "Padrão de qualidade",
+                        "category_id": "cc70ec9f-c182-4906-8b6d-b192dd45fc81"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{}]
+      }
+    },
+    "/departments/create": {
+      "post": {
+        "description": "Rota responsável por cadastrar um novo departamento",
+        "tags": ["Token de Admin"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/departmentCreate"
+              },
+              "examples": {
+                "department": {
+                  "value": {
+                    "name": "Tecnologia da Informação",
+                    "description": "Departamento responsável pela parte de TI",
+                    "company_id": "86bffcd8-ff51-4b42-8dd2-e60639a3dc13"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "department": {
+                    "value": {
+                      "id": "1ddad3fb-da47-45af-a62c-52a3a302276c",
+                      "name": "Tecnologia da Informação",
+                      "description": "Departamento responsável pela parte de TI",
+                      "company_id": "86bffcd8-ff51-4b42-8dd2-e60639a3dc13"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departments/readAll": {
+      "get": {
+        "description": "Rota responsável por listar todos os departamentos cadastrados",
+        "tags": ["Token de Admin"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                },
+                "examples": {
+                  "departments": {
+                    "value": [
+                      {
+                        "id": "f2fabf86-95a9-45b9-82c9-df6b927e2841",
+                        "name": "Recrutamento e Seleção",
+                        "description": "Departamento responsável por recrutar e contratar novos funcionários",
+                        "company_id": "7f0930dc-d7ef-4dbd-a005-4702020f2da9"
+                      },
+                      {
+                        "id": "1ddad3fb-da47-45af-a62c-52a3a302276c",
+                        "name": "Tecnologia da Informação",
+                        "description": "Departamento responsável pela parte de TI",
+                        "company_id": "86bffcd8-ff51-4b42-8dd2-e60639a3dc13"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departments/readById/{department_id}": {
+      "get": {
+        "description": "Rota responsável por listar um departamento a partir do id informado",
+        "tags": ["Funcionários"],
+        "parameters": [
+          {
+            "name": "Id do departamento",
+            "description": "Exemplo: 7f0930dc-d7ef-4dbd-a005-4702020f2da9"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                },
+                "examples": {
+                  "response": {
+                    "value": {
+                      "id": "1ddad3fb-da47-45af-a62c-52a3a302276c",
+                      "name": "Tecnologia da Informação",
+                      "description": "Departamento responsável pela parte de TI",
+                      "company_id": "86bffcd8-ff51-4b42-8dd2-e60639a3dc13",
+                      "company": {
+                        "id": "86bffcd8-ff51-4b42-8dd2-e60639a3dc13",
+                        "name": "Mercado Kenzie",
+                        "description": "Padrão de qualidade",
+                        "category_id": "cc70ec9f-c182-4906-8b6d-b192dd45fc81"
+                      },
+                      "employees": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departments/readByCompany/{company_id}": {
+      "get": {
+        "description": "Rota responsável por listar todos os departamentos de uma empresa, o ID da empresa deve ser informado na URL da requisição",
+        "tags": ["Token de Admin"],
+        "parameters": [
+          {
+            "name": "UUID DA EMPRESA",
+            "description": "Exemplo: b11aae6d-3f9d-4b9b-a119-6a62e9a494f8",
+            "in": "query",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                },
+                "examples": {
+                  "company_departments": {
+                    "value": [
+                      {
+                        "id": "1ddad3fb-da47-45af-a62c-52a3a302276c",
+                        "name": "Tecnologia da Informação",
+                        "description": "Departamento responsável pela parte de TI",
+                        "company_id": "86bffcd8-ff51-4b42-8dd2-e60639a3dc13"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departments/update/{department_id}": {
+      "patch": {
+        "description": "Rota responsável por atualizar a descrição de um departamento",
+        "tags": ["Token de Admin"],
+        "parameters": [
+          {
+            "name": "UUID do departamento",
+            "in": "query",
+            "schema": {}
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/departmentUpdatee"
+              },
+              "examples": {
+                "department": {
+                  "value": {
+                    "description": "teste update3",
+                    "name": "teste update3"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "department": {
+                    "value": {
+                      "message": "Departamento atualizado com sucesso",
+                      "department": {
+                        "id": "01fcf9b0-3b02-4f0f-8e9d-db8cc6fa2807",
+                        "name": "teste update3",
+                        "description": "teste update3",
+                        "company_id": "3ecd8d85-2541-40db-8f90-1f545452196e"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departments/delete/{department_id}": {
+      "delete": {
+        "description": "Rota responsável por deletar um departamento",
+        "tags": ["Token de Admin"],
+        "parameters": [
+          {
+            "name": "UUID do departamento",
+            "in": "query",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "department": {
+                    "value": {
+                      "message": "Departamento deletado com sucesso"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "loginResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "isAdm": {
+            "type": "boolean"
+          }
+        }
+      },
+      "categoryResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "employeesCreate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "employeesUpdate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "employeesHire": {
+        "type": "object",
+        "properties": {
+          "department_id": {
+            "type": "string"
+          }
+        }
+      },
+      "employeesResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "is_admin": {
+            "type": "boolean"
+          },
+          "company": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "category_id": {
+                "type": "string"
+              }
+            }
+          },
+          "department": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "category_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "departmentCreate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "company_id": {
+            "type": "string"
+          }
+        }
+      },
+      "departmentUpdatee": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "departmentResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "company_id": {
+            "type": "string"
+          }
+        }
+      },
+      "departmentResponseFull": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "company_id": {
+            "type": "string"
+          },
+          "company": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "category_id": {
+                "type": "string"
+              }
+            }
+          },
+          "employees": {
+            "type": "array",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "is_admin": {
+                "type": "boolean"
+              },
+              "company_id": {
+                "type": "string"
+              },
+              "department_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "companyResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category_id": {
+            "type": "string"
+          }
+        }
+      },
+      "companyResponseFull": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category_id": {
+            "type": "string"
+          },
+          "category": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "departments": {
+            "type": "array",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "company_id": {
+                "type": "string"
+              }
+            }
+          },
+          "employees": {
+            "type": "array",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "is_admin": {
+                "type": "boolean"
+              },
+              "company_id": {
+                "type": "string"
+              },
+              "department_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "JWT": []
+    }
+  ]
+}
