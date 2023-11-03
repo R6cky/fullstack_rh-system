@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import { MainPageAdmin } from './components/pages/MainPageAdmin'
 import { MainPageDefault } from './components/pages/MainPageDefault'
+import { Header } from './components/pages/Header'
 
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
 
   return (
     <>
+      <Header/>
       {isAdmin === 1 ? <MainPageAdmin/> : <MainPageDefault/>}
       
     </>
