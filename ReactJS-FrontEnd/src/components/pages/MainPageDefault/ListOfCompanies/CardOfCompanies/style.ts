@@ -7,6 +7,5 @@ export const StyleCardOfCompanies = styled.li`
     height: 100px;
     margin: 10px auto;
     border-radius: 5px;
-    
 
 `

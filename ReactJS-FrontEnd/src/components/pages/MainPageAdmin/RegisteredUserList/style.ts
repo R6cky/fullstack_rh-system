@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-export const StyleDepartmentList = styled.ul`
-    
+export const StyleRegisteredUserlist = styled.ul`
     display: flex;
     justify-content: space-around;
 

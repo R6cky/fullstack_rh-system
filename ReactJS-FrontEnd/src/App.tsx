@@ -1,17 +1,10 @@
-import { useState } from 'react'
-import { MainPageAdmin } from './components/pages/MainPageAdmin'
-import { MainPageDefault } from './components/pages/MainPageDefault'
-
-
+import { useState } from "react";
+import { RoutesMain } from "./routes/Routesmain";
 
 function App() {
-  const [isAdmin, setIsAdmin] = useState(0)
+  const [isAdmin, setIsAdmin] = useState(0);
 
-  return (
-    <>
-      {isAdmin === 1 ? <MainPageAdmin/> : <MainPageDefault/>}
-    </>
-  )
+  return <RoutesMain />;
 }
 
-export default App
+export default App;

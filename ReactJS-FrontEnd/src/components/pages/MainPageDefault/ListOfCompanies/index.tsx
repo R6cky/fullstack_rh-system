@@ -1,12 +1,12 @@
-import { CardOfCompanies } from "./CardOfCompanies"
-import { StyleListOfCompanies } from "./style"
+import { CardOfCompanies } from "./CardOfCompanies";
+import { StyleListOfCompanies } from "./style";
 
 export const ListOfCompanies = () => {
-    return (
-            <StyleListOfCompanies>
-                <CardOfCompanies/>
-                <CardOfCompanies/>
-                <CardOfCompanies/>
-            </StyleListOfCompanies>
-    )
-}
+  return (
+    <StyleListOfCompanies>
+      <CardOfCompanies />
+      <CardOfCompanies />
+      <CardOfCompanies />
+    </StyleListOfCompanies>
+  );
+};

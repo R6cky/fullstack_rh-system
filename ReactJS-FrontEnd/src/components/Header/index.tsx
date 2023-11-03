@@ -1,7 +1,7 @@
 import { StyleHeader } from "./style"
 
 export const Header= () => {
-    const pageName: string = "Header";
+    
     return (
        
             <StyleHeader>
