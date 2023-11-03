@@ -27,5 +27,23 @@ export const StyleMainPageDefault = styled.div`
     
     }
 
+    .header-default-page{
+        border: solid;
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+
+    .buttons-right-area{
+            border: solid red;
+            width: 300px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+    }
+
 
 `

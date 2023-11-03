@@ -4,6 +4,13 @@ import { StyleMainPageDefault} from "./style"
 export const MainPageDefault = () => {
     return (
             <StyleMainPageDefault>
+                <header className="header-default-page">
+                <div className="company-name">RH system</div>
+                <div className="buttons-right-area">
+                    <button className="login-button">Login</button>
+                    <button className="register-button">Cadastro</button>
+                </div>
+                </header>
                 <div className="container-data">
                     <div className="container-data-left">
                         <img src="" alt="Imagem aqui" />

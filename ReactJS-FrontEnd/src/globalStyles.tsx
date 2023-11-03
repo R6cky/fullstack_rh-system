@@ -14,6 +14,13 @@ export const GlobalStyles = createGlobalStyle`
             padding: 0;
         }
 
+        button{
+            cursor: pointer;
+        }
+
+        select{
+            cursor: pointer;
+        }
         
         --blue: #0000FF;
         --black:#FFFF;
