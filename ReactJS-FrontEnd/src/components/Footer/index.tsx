@@ -1,9 +1,9 @@
-import { StyleFooter } from "./style"
+import { StyleFooter } from "./style";
 
-export const DepartmentCreate = () => {
-    return (
-        <>
-            <StyleFooter/>
-        </>
-    )
-}
+export const Footer = () => {
+  return (
+    <StyleFooter>
+      <p>Todos os direitos reservados</p>
+    </StyleFooter>
+  );
+};

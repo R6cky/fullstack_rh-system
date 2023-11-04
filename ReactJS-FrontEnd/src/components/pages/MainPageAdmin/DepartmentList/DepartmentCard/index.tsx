@@ -11,14 +11,14 @@ export const DepartmentCard = () => {
         </div>
 
         <div className="right-data">
-          <span className="view-department">
+          <span className="view">
             <img src="" alt="img-view" />
           </span>
           <span className="edit-department">
-            <img src="" alt="edit-department" />
+            <img src="" alt="edit" />
           </span>
           <span className="remove-department">
-            <img src="" alt="remove-department" />
+            <img src="" alt="remove" />
           </span>
         </div>
       </StyleDepartmentCard>

@@ -6,6 +6,10 @@ export const DepartmentList = () => {
     <StyleDepartmentList>
       <DepartmentCard />
       <DepartmentCard />
+      <DepartmentCard />
+      <DepartmentCard />
+      <DepartmentCard />
+      <DepartmentCard />
     </StyleDepartmentList>
   );
 };

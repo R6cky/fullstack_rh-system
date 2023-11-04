@@ -6,6 +6,10 @@ export const RegisteredUserlist = () => {
     <StyleRegisteredUserlist>
       <RegisteredUserCard />
       <RegisteredUserCard />
+      <RegisteredUserCard />
+      <RegisteredUserCard />
+      <RegisteredUserCard />
+      <RegisteredUserCard />
     </StyleRegisteredUserlist>
   );
 };

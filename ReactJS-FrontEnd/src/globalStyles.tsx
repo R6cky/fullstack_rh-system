@@ -7,6 +7,12 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+
+        body{
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+        }
         
         ul{
             list-style:none;
