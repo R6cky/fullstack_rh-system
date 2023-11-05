@@ -5,6 +5,8 @@ import { Register } from "../components/pages/Register";
 import { MainPageAdmin } from "../components/pages/MainPageAdmin";
 import { MainPageUser } from "../components/pages/MainPageUser";
 import { DepartmentView } from "../components/Modals/DepartmentView";
+import { DepartmentCreate } from "../components/Modals/DepartmentCreate";
+import { DepartmentEdit } from "../components/Modals/DepartmentEdit";
 
 export const RoutesMain: any = () => {
   return (
@@ -15,6 +17,8 @@ export const RoutesMain: any = () => {
       <Route path="/homeAdmin" element={<MainPageAdmin />} />
       <Route path="/homeUser" element={<MainPageUser />} />
       <Route path="/dview" element={<DepartmentView />} />
+      <Route path="/dcreate" element={<DepartmentCreate />} />
+      <Route path="/dedit" element={<DepartmentEdit />} />
     </Routes>
   );
 };
