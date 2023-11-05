@@ -1,9 +1,9 @@
-import { StyleEditUser } from "./style"
+import { StyleEditUser } from "./style";
 
-export const DepartmentCreate = () => {
-    return (
-        <>
-            <StyleEditUser/>
-        </>
-    )
-}
+export const EditUser = () => {
+  return (
+    <>
+      <StyleEditUser />
+    </>
+  );
+};

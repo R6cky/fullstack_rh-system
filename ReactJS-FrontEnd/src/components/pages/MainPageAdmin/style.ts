@@ -41,6 +41,7 @@ export const StyleMainPageAdmin = styled.div`
             select{
                 width: 200px;
                 height: 30px;
+                
             }
 
         }

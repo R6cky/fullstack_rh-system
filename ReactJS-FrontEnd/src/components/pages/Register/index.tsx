@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { StyleRegister } from "./style";
+import { Footer } from "../../Footer";
 
 export const Register = () => {
   return (
@@ -6,8 +8,16 @@ export const Register = () => {
       <header className="header-default-page">
         <div className="company-name">RH system</div>
         <div className="buttons-right-area">
-          <button className="login-button">Home</button>
-          <button className="register-button">Login</button>
+          <button className="login-button">
+            <Link className="redirect-link" to={"/"}>
+              Home
+            </Link>
+          </button>
+          <button className="register-button">
+            <Link className="redirect-link" to={"/login"}>
+              Login
+            </Link>
+          </button>
         </div>
       </header>
 
@@ -30,6 +40,7 @@ export const Register = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </StyleRegister>
   );
 };

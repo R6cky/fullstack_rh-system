@@ -1,14 +1,24 @@
+import { Link } from "react-router-dom";
 import { ListOfCompanies } from "./ListOfCompanies";
-import { StyleMainPageDefault } from "./style";
+import { StyleHome } from "./style";
+import { Footer } from "../../Footer";
 
-export const MainPageDefault = () => {
+export const Home = () => {
   return (
-    <StyleMainPageDefault>
+    <StyleHome>
       <header className="header-default-page">
         <div className="company-name">RH system</div>
         <div className="buttons-right-area">
-          <button className="login-button">Login</button>
-          <button className="register-button">Cadastro</button>
+          <button className="login-button">
+            <Link className="redirect-link" to={"/login"}>
+              Login
+            </Link>
+          </button>
+          <button className="register-button">
+            <Link className="redirect-link" to={"/register"}>
+              Cadastro
+            </Link>
+          </button>
         </div>
       </header>
       <div className="container-data">
@@ -24,6 +34,7 @@ export const MainPageDefault = () => {
           <ListOfCompanies />
         </div>
       </div>
-    </StyleMainPageDefault>
+      <Footer />
+    </StyleHome>
   );
 };

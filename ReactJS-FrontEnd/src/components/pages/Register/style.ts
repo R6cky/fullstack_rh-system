@@ -23,6 +23,7 @@ export const StyleRegister = styled.div`
         .register-container{
         border: solid red;
         width: 500px;
+        max-width: 100%;
         height: 400px;
         border-radius: 10px;
         

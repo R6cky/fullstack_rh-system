@@ -1,16 +1,20 @@
 import { Route, Routes } from "react-router-dom";
-import { MainPageDefault } from "../components/pages/MainPageDefault";
+import { Home } from "../components/pages/Home";
 import { Login } from "../components/pages/Login";
 import { Register } from "../components/pages/Register";
 import { MainPageAdmin } from "../components/pages/MainPageAdmin";
+import { MainPageUser } from "../components/pages/MainPageUser";
+import { DepartmentView } from "../components/Modals/DepartmentView";
 
 export const RoutesMain: any = () => {
   return (
     <Routes>
-      <Route path="/" element={<MainPageDefault />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/homeAdmin" element={<MainPageAdmin />} />
+      <Route path="/homeUser" element={<MainPageUser />} />
+      <Route path="/dview" element={<DepartmentView />} />
     </Routes>
   );
 };

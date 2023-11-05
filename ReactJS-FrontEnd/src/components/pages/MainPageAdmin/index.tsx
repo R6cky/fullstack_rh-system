@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Footer } from "../../Footer";
 import { DepartmentList } from "./DepartmentList";
 import { RegisteredUserlist } from "./RegisteredUserList";
@@ -9,7 +10,9 @@ export const MainPageAdmin = () => {
       <header className="header-default-page">
         <div className="company-name">RH system</div>
         <div className="buttons-right-area">
-          <button className="login-button">Logout</button>
+          <button className="login-button">
+            <Link to={"/"}>Logout</Link>
+          </button>
         </div>
       </header>
 

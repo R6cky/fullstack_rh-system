@@ -1,9 +1,9 @@
-import { StyleRemoveUser } from "./style"
+import { StyleRemoveUser } from "./style";
 
-export const DepartmentCreate = () => {
-    return (
-        <>
-            <StyleRemoveUser/>
-        </>
-    )
-}
+export const RemoveUser = () => {
+  return (
+    <>
+      <StyleRemoveUser />
+    </>
+  );
+};
