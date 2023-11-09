@@ -6,6 +6,32 @@ export const StyleDepartmentRemove = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+
+    .close-modal{
+        border: solid;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: flex-end;
+
+        span{
+            border-radius: 50%;
+            border: solid ;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            cursor: pointer;
+        }
+    }
 
     .data-area{
         border: solid red;
