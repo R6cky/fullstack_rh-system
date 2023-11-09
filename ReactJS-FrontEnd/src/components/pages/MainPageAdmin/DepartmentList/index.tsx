@@ -1,15 +1,16 @@
+import { useContext } from "react";
 import { DepartmentCard } from "./DepartmentCard";
 import { StyleDepartmentList } from "./style";
+import { CompanyContext } from "../../../../context/ContextCompanies";
 
 export const DepartmentList = () => {
+  const { departmentsByCompany } = useContext(CompanyContext);
+
   return (
     <StyleDepartmentList>
-      <DepartmentCard />
-      <DepartmentCard />
-      <DepartmentCard />
-      <DepartmentCard />
-      <DepartmentCard />
-      <DepartmentCard />
+      {departmentsByCompany.map((department: any) => {
+        return <DepartmentCard key={department.id} department={department} />;
+      })}
     </StyleDepartmentList>
   );
 };
