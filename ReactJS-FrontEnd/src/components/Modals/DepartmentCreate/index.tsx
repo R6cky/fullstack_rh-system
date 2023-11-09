@@ -1,9 +1,27 @@
+import { useContext } from "react";
 import { StyleDepartmentCreate } from "./style";
+import { ModalContext } from "../../../context/ContextModals";
 
 export const DepartmentCreate = () => {
+  const { activateModal, setModalDepartmentCreate, modalDepartmentCreate } =
+    useContext(ModalContext);
+
   return (
     <StyleDepartmentCreate>
       <div className="form-area">
+        <div className="close-modal">
+          <span
+            className="btn-close-modal"
+            onClick={() => {
+              return activateModal(
+                modalDepartmentCreate,
+                setModalDepartmentCreate
+              );
+            }}
+          >
+            X
+          </span>
+        </div>
         <h2 className="title-department-create">Criar departamento</h2>
         <form
           className="form-department-create"
