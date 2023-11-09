@@ -1,6 +1,18 @@
+import { useContext } from "react";
 import { StyleDepartmentCard } from "./style";
+import { ModalContext } from "../../../../../context/ContextModals";
 
 export const DepartmentCard = ({ department }: any) => {
+  const {
+    activateModal,
+    modalDepartmentRemove,
+    setModalDepartmentRemove,
+    modalDepartmentEdit,
+    setModalDepartmentEdit,
+    modalDepartmentView,
+    setModalDepartmentView,
+  } = useContext(ModalContext);
+
   return (
     <StyleDepartmentCard>
       <div className="left-data">
@@ -11,13 +23,31 @@ export const DepartmentCard = ({ department }: any) => {
 
       <div className="right-data">
         <span className="view">
-          <img src="" alt="img-view" />
+          <img
+            src=""
+            alt="img-view"
+            onClick={() =>
+              activateModal(modalDepartmentView, setModalDepartmentView)
+            }
+          />
         </span>
         <span className="edit-department">
-          <img src="" alt="edit" />
+          <img
+            src=""
+            alt="edit"
+            onClick={() =>
+              activateModal(modalDepartmentEdit, setModalDepartmentEdit)
+            }
+          />
         </span>
         <span className="remove-department">
-          <img src="" alt="remove" />
+          <img
+            src=""
+            alt="remove"
+            onClick={() =>
+              activateModal(modalDepartmentRemove, setModalDepartmentRemove)
+            }
+          />
         </span>
       </div>
     </StyleDepartmentCard>

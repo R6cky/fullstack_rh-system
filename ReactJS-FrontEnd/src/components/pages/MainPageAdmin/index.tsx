@@ -4,13 +4,17 @@ import { DepartmentList } from "./DepartmentList";
 import { RegisteredUserlist } from "./RegisteredUserList";
 import { StyleMainPageAdmin } from "./style";
 import { CompanyContext } from "../../../context/ContextCompanies";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../../context/ContextRegisteredusers";
+import { ModalContext } from "../../../context/ContextModals";
+import { DepartmentCreate } from "../../Modals/DepartmentCreate";
 
 export const MainPageAdmin = () => {
   const { getCompanies, companies, getDepartmentByCompany } =
     useContext(CompanyContext);
   const { getRegisteredUser } = useContext(UserContext);
+  const { modalDepartmentCreate, setModalDepartmentCreate, activateModal } =
+    useContext(ModalContext);
 
   useEffect(() => {
     getCompanies();
@@ -45,7 +49,17 @@ export const MainPageAdmin = () => {
         <div className="department-list">
           <div className="header-departments">
             <h3 className="title-header-departments">Departamentos</h3>
-            <span className="btn-create-department">Criar</span>
+            <span
+              className="btn-create-department"
+              onClick={() => {
+                return activateModal(
+                  modalDepartmentCreate,
+                  setModalDepartmentCreate
+                );
+              }}
+            >
+              Criar
+            </span>
           </div>
           <DepartmentList />
         </div>
@@ -54,6 +68,7 @@ export const MainPageAdmin = () => {
         </div>
       </div>
       <Footer />
+      {modalDepartmentCreate ? <DepartmentCreate /> : null}
     </StyleMainPageAdmin>
   );
 };

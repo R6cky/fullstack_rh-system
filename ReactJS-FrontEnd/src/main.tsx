@@ -5,16 +5,19 @@ import { GlobalStyles } from "./globalStyles.tsx";
 import { CompanyProvider } from "./context/ContextCompanies.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/ContextRegisteredusers.tsx";
+import { ModalProvider } from "./context/ContextModals.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <GlobalStyles />
-      <CompanyProvider>
-        <UserProvider>
-          <App />
-        </UserProvider>
-      </CompanyProvider>
+      <ModalProvider>
+        <CompanyProvider>
+          <UserProvider>
+            <App />
+          </UserProvider>
+        </CompanyProvider>
+      </ModalProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

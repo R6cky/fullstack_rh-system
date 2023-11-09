@@ -1,9 +1,17 @@
 import { useContext } from "react";
 import { StyleRegisteredUserCard } from "./style";
 import { CompanyContext } from "../../../../../context/ContextCompanies";
+import { ModalContext } from "../../../../../context/ContextModals";
 
 export const RegisteredUserCard = ({ user }: any) => {
   const { companies } = useContext(CompanyContext);
+  const {
+    activateModal,
+    modalUserEdit,
+    setModalUserEdit,
+    modalUserDelete,
+    setModalUserDelete,
+  } = useContext(ModalContext);
   let companyName: String[] = [];
 
   companies.forEach((element: any) => {
@@ -23,10 +31,18 @@ export const RegisteredUserCard = ({ user }: any) => {
       </div>
       <div className="right-data">
         <span className="edit-user">
-          <img src="" alt="edit-user" />
+          <img
+            src=""
+            alt="edit-user"
+            onClick={() => activateModal(modalUserEdit, setModalUserEdit)}
+          />
         </span>
         <span className="remove-user">
-          <img src="" alt="remove-user" />
+          <img
+            src=""
+            alt="remove-user"
+            onClick={() => activateModal(modalUserDelete, setModalUserDelete)}
+          />
         </span>
       </div>
     </StyleRegisteredUserCard>
