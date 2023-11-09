@@ -28,6 +28,7 @@ export const CompanyProvider = ({ children }: any) => {
       const request = await api.get(`/departments/readByCompany/${companyId}`, {
         headers: { Authorization: `Bearer ${bearerToken}` },
       });
+      console.log(request);
       setDepartmentsByCompany(request.data);
     } catch (error) {
       console.log(error);
