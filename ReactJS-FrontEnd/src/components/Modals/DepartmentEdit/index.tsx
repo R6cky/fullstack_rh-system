@@ -1,10 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ModalContext } from "../../../context/ContextModals";
 import { StyleDepartmentEdit } from "./style";
 
 export const DepartmentEdit = () => {
-  const { activateModal, setModalDepartmentEdit, modalDepartmentEdit } =
-    useContext(ModalContext);
+  const {
+    activateModal,
+    setModalDepartmentEdit,
+    modalDepartmentEdit,
+    departmentEdit,
+  } = useContext(ModalContext);
+
+  const [data, setData] = useState({
+    description: "",
+  });
 
   return (
     <StyleDepartmentEdit>
@@ -23,11 +31,12 @@ export const DepartmentEdit = () => {
         <form
           className="form-department-create"
           action=""
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={(e) => departmentEdit(e, data)}
         >
           <input
             type="text"
             placeholder="Editar  (valores da descrição anterior)"
+            onChange={(e) => setData({ description: e.target.value })}
           />
 
           <button className="btn-department-create">Criar</button>

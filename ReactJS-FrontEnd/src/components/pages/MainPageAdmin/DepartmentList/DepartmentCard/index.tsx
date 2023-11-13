@@ -35,8 +35,10 @@ export const DepartmentCard = ({ department }: any) => {
           <img
             src=""
             alt="edit"
-            onClick={() =>
-              activateModal(modalDepartmentEdit, setModalDepartmentEdit)
+            onClick={
+              () => activateModal(modalDepartmentEdit, setModalDepartmentEdit)
+              //Chamar função que faz request, passar id do departamento
+              // dentro da função de request, adicionar a função activatemodal
             }
           />
         </span>

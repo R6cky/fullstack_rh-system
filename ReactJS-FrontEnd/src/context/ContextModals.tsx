@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { api } from "../services/api";
 
 export const ModalContext = createContext({} as any);
 
@@ -18,6 +19,45 @@ export const ModalProvider = ({ children }: any) => {
     }
   }
 
+  async function departmentCreate(e: any, data: any) {
+    e.preventDefault();
+    const bearerToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+    try {
+      const request = (
+        await api.post("/departments/create", data, {
+          headers: {
+            Authorization: `Bearer ${bearerToken}`,
+          },
+        })
+      ).data;
+      activateModal(modalDepartmentCreate, setModalDepartmentCreate);
+      console.log(request);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function departmentEdit(e: any, data: any, id: any) {
+    e.preventDefault();
+    const bearerToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+    try {
+      const request = (
+        await api.patch(`/departments/update/${id}`, data, {
+          headers: {
+            Authorization: `Bearer ${bearerToken}`,
+          },
+        })
+      ).data;
+      console.log(request);
+      activateModal(modalDepartmentCreate, setModalDepartmentCreate);
+      console.log(request);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <ModalContext.Provider
       value={{
@@ -34,6 +74,8 @@ export const ModalProvider = ({ children }: any) => {
         setModalUserEdit,
         setModalUserDelete,
         activateModal,
+        departmentCreate,
+        departmentEdit,
       }}
     >
       {children}
