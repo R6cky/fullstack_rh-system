@@ -12,15 +12,8 @@ export const DepartmentCard = ({ department }: any) => {
     setModalDepartmentEdit,
     modalDepartmentView,
     setModalDepartmentView,
-    departmentEdit,
+    departmentRemove,
   } = useContext(ModalContext);
-
-  const [departmentId, setDepartmentId] = useState("");
-
-  function activatedModalAndSendId(id: any) {
-    setDepartmentId(id);
-    activateModal(modalDepartmentEdit, setModalDepartmentEdit);
-  }
 
   return (
     <StyleDepartmentCard>
@@ -45,20 +38,25 @@ export const DepartmentCard = ({ department }: any) => {
           <img
             src=""
             alt="edit"
-            onClick={() => activatedModalAndSendId(department.id)}
+            onClick={() =>
+              activateModal(
+                modalDepartmentEdit,
+                setModalDepartmentEdit,
+                department
+              )
+            }
           />
-          {modalDepartmentEdit ? (
-            <DepartmentEdit departmentId={departmentId} />
-          ) : (
-            false
-          )}
         </span>
         <span className="remove-department">
           <img
             src=""
             alt="remove"
             onClick={() =>
-              activateModal(modalDepartmentRemove, setModalDepartmentRemove)
+              activateModal(
+                modalDepartmentRemove,
+                setModalDepartmentRemove,
+                department
+              )
             }
           />
         </span>

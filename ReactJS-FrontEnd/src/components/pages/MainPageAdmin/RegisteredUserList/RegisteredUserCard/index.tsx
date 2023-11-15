@@ -24,6 +24,7 @@ export const RegisteredUserCard = ({ user }: any) => {
     <StyleRegisteredUserCard>
       <div className="left-data">
         <h4 className="user-name">{user.name}</h4>
+        {user.id}
         {companyName.length === 0 ? (
           <span className="company-name-null">Sem vínculo com empresa </span>
         ) : (
@@ -35,15 +36,16 @@ export const RegisteredUserCard = ({ user }: any) => {
           <img
             src=""
             alt="edit-user"
-            onClick={() => activateModal(modalUserEdit, setModalUserEdit)}
+            onClick={() => activateModal(modalUserEdit, setModalUserEdit, user)}
           />
-          {modalUserEdit ? <UserEdit userData={user} /> : null}
         </span>
         <span className="remove-user">
           <img
             src=""
             alt="remove-user"
-            onClick={() => activateModal(modalUserDelete, setModalUserDelete)}
+            onClick={() =>
+              activateModal(modalUserDelete, setModalUserDelete, user)
+            }
           />
         </span>
       </div>
