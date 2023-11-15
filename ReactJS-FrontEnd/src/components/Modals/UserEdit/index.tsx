@@ -2,9 +2,14 @@ import { useContext, useState } from "react";
 import { StyleUserEdit } from "./style";
 import { ModalContext } from "../../../context/ContextModals";
 
-export const UserEdit = ({ userData }: any) => {
-  const { modalUserEdit, setModalUserEdit, activateModal, userEdit } =
-    useContext(ModalContext);
+export const UserEdit = () => {
+  const {
+    modalUserEdit,
+    setModalUserEdit,
+    activateModal,
+    userEdit,
+    dataRequest,
+  } = useContext(ModalContext);
 
   const [data, setData] = useState({
     name: "",
@@ -28,7 +33,7 @@ export const UserEdit = ({ userData }: any) => {
         <form
           className="form-user-edit"
           action=""
-          onSubmit={(e) => userEdit(e, data, userData.id)}
+          onSubmit={(e) => userEdit(e, data, dataRequest.id)}
         >
           <input
             type="text"
@@ -36,7 +41,7 @@ export const UserEdit = ({ userData }: any) => {
             onChange={(e) =>
               setData({
                 name: e.target.value,
-                email: userData.email,
+                email: data.email,
               })
             }
           />
