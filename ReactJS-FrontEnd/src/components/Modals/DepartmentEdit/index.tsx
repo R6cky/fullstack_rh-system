@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ModalContext } from "../../../context/ContextModals";
 import { StyleDepartmentEdit } from "./style";
 
-export const DepartmentEdit = () => {
+export const DepartmentEdit = ({ departmentId }: any) => {
   const {
     activateModal,
     setModalDepartmentEdit,
@@ -13,6 +13,10 @@ export const DepartmentEdit = () => {
   const [data, setData] = useState({
     description: "",
   });
+
+  useEffect(() => {
+    console.log(departmentId);
+  }, []);
 
   return (
     <StyleDepartmentEdit>
@@ -31,15 +35,19 @@ export const DepartmentEdit = () => {
         <form
           className="form-department-create"
           action=""
-          onSubmit={(e) => departmentEdit(e, data)}
+          onSubmit={(e) => e.preventDefault()}
         >
           <input
             type="text"
             placeholder="Editar  (valores da descrição anterior)"
             onChange={(e) => setData({ description: e.target.value })}
           />
-
-          <button className="btn-department-create">Criar</button>
+          <button
+            className="btn-department-create"
+            onClick={() => console.log(departmentId)}
+          >
+            Editar
+          </button>
         </form>
       </div>
     </StyleDepartmentEdit>

@@ -38,21 +38,42 @@ export const ModalProvider = ({ children }: any) => {
     }
   }
 
-  async function departmentEdit(e: any, data: any, id: any) {
+  async function departmentEdit(e: any, id: any, data: any) {
     e.preventDefault();
+    console.log(id);
+    console.log(data);
+    const bearerToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+    // try {
+    //   const request = (
+    //     await api.patch(`/departments/update/${id}`, data, {
+    //       headers: {
+    //         Authorization: `Bearer ${bearerToken}`,
+    //       },
+    //     })
+    //   ).data;
+    //   console.log(request);
+    //   activateModal(modalDepartmentEdit, setModalDepartmentEdit);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  }
+
+  async function userEdit(e: any, data: any, id: any) {
+    e.preventDefault();
+    console.log(data);
     const bearerToken =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
     try {
       const request = (
-        await api.patch(`/departments/update/${id}`, data, {
+        await api.patch(`/employees/updateEmployee/${id}`, data, {
           headers: {
             Authorization: `Bearer ${bearerToken}`,
           },
         })
       ).data;
       console.log(request);
-      activateModal(modalDepartmentCreate, setModalDepartmentCreate);
-      console.log(request);
+      activateModal(modalUserEdit, setModalUserEdit);
     } catch (error) {
       console.log(error);
     }
@@ -76,6 +97,7 @@ export const ModalProvider = ({ children }: any) => {
         activateModal,
         departmentCreate,
         departmentEdit,
+        userEdit,
       }}
     >
       {children}

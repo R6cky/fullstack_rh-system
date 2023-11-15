@@ -7,9 +7,10 @@ export const StyleUserEdit = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0;
-    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.2);
 
     .close-modal{
         border: solid;

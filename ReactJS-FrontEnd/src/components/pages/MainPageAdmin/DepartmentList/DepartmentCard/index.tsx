@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { StyleDepartmentCard } from "./style";
 import { ModalContext } from "../../../../../context/ContextModals";
+import { DepartmentEdit } from "../../../../Modals/DepartmentEdit";
 
 export const DepartmentCard = ({ department }: any) => {
   const {
@@ -11,10 +12,19 @@ export const DepartmentCard = ({ department }: any) => {
     setModalDepartmentEdit,
     modalDepartmentView,
     setModalDepartmentView,
+    departmentEdit,
   } = useContext(ModalContext);
+
+  const [departmentId, setDepartmentId] = useState("");
+
+  function activatedModalAndSendId(id: any) {
+    setDepartmentId(id);
+    activateModal(modalDepartmentEdit, setModalDepartmentEdit);
+  }
 
   return (
     <StyleDepartmentCard>
+      {department.id}
       <div className="left-data">
         <h4 className="title-department">{department.name}</h4>
         <p className="description-department">{department.description}</p>
@@ -35,12 +45,13 @@ export const DepartmentCard = ({ department }: any) => {
           <img
             src=""
             alt="edit"
-            onClick={
-              () => activateModal(modalDepartmentEdit, setModalDepartmentEdit)
-              //Chamar função que faz request, passar id do departamento
-              // dentro da função de request, adicionar a função activatemodal
-            }
+            onClick={() => activatedModalAndSendId(department.id)}
           />
+          {modalDepartmentEdit ? (
+            <DepartmentEdit departmentId={departmentId} />
+          ) : (
+            false
+          )}
         </span>
         <span className="remove-department">
           <img

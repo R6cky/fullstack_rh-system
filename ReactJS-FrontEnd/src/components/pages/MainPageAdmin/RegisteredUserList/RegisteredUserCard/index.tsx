@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { StyleRegisteredUserCard } from "./style";
 import { CompanyContext } from "../../../../../context/ContextCompanies";
 import { ModalContext } from "../../../../../context/ContextModals";
+import { UserEdit } from "../../../../Modals/UserEdit";
 
 export const RegisteredUserCard = ({ user }: any) => {
   const { companies } = useContext(CompanyContext);
@@ -36,6 +37,7 @@ export const RegisteredUserCard = ({ user }: any) => {
             alt="edit-user"
             onClick={() => activateModal(modalUserEdit, setModalUserEdit)}
           />
+          {modalUserEdit ? <UserEdit userData={user} /> : null}
         </span>
         <span className="remove-user">
           <img

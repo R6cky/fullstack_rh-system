@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyleDepartmentEdit = styled.div`
 
-    border:  solid red;
+    border:  solid green;
     width: 100%;
     max-width: 100%;
     height: 100vh;
@@ -11,6 +11,7 @@ export const StyleDepartmentEdit = styled.div`
     align-content: center;
     position: fixed;
     top: 0px;
+    left: 0px;
     background: rgba(0, 0, 0, 0.8);
   
 

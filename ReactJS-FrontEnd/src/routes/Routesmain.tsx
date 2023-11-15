@@ -19,12 +19,6 @@ export const RoutesMain: any = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/homeAdmin" element={<MainPageAdmin />} />
       <Route path="/homeUser" element={<MainPageUser />} />
-      <Route path="/dview" element={<DepartmentView />} />
-      <Route path="/dcreate" element={<DepartmentCreate />} />
-      <Route path="/dedit" element={<DepartmentEdit />} />
-      <Route path="/dremove" element={<DepartmentRemove />} />
-      <Route path="/uedit" element={<UserEdit />} />
-      <Route path="/uremove" element={<RemoveUser />} />
     </Routes>
   );
 };

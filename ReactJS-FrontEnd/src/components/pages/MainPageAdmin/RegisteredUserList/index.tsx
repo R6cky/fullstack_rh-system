@@ -8,14 +8,14 @@ import { RemoveUser } from "../../../Modals/UserRemove";
 
 export const RegisteredUserlist = () => {
   const { registeredUsers } = useContext(UserContext);
-  const { modalUserEdit, modalUserDelete } = useContext(ModalContext);
+  const { modalUserDelete } = useContext(ModalContext);
 
   return (
     <StyleRegisteredUserlist>
       {registeredUsers.map((user: any) => (
         <RegisteredUserCard user={user} key={user.id} />
       ))}
-      {modalUserEdit ? <UserEdit /> : null}
+
       {modalUserDelete ? <RemoveUser /> : null}
     </StyleRegisteredUserlist>
   );
