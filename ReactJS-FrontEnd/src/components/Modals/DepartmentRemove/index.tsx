@@ -3,8 +3,13 @@ import { StyleDepartmentRemove } from "./style";
 import { ModalContext } from "../../../context/ContextModals";
 
 export const DepartmentRemove = () => {
-  const { modalDepartmentRemove, setModalDepartmentRemove, activateModal } =
-    useContext(ModalContext);
+  const {
+    modalDepartmentRemove,
+    setModalDepartmentRemove,
+    activateModal,
+    dataRequest,
+    departmentRemove,
+  } = useContext(ModalContext);
   return (
     <StyleDepartmentRemove>
       <div className="data-area">
@@ -25,7 +30,12 @@ export const DepartmentRemove = () => {
           Deseja realmente remover o NomeDoDepartamento e demitir seus
           funcionários?
         </h3>
-        <button className="btn-remove">Remover</button>
+        <button
+          className="btn-remove"
+          onClick={(e) => departmentRemove(e, dataRequest.id)}
+        >
+          Remover
+        </button>
       </div>
     </StyleDepartmentRemove>
   );
