@@ -14,9 +14,7 @@ export const DepartmentEdit = ({ departmentId }: any) => {
     description: "",
   });
 
-  useEffect(() => {
-    console.log(departmentId);
-  }, []);
+  console.log(departmentId);
 
   return (
     <StyleDepartmentEdit>
