@@ -3,8 +3,13 @@ import { StyleUserRemove } from "./style";
 import { ModalContext } from "../../../context/ContextModals";
 
 export const RemoveUser = () => {
-  const { activateModal, modalUserDelete, setModalUserDelete } =
-    useContext(ModalContext);
+  const {
+    activateModal,
+    modalUserDelete,
+    setModalUserDelete,
+    dataRequest,
+    userRemove,
+  } = useContext(ModalContext);
   return (
     <StyleUserRemove>
       <div className="data-area">
@@ -21,7 +26,12 @@ export const RemoveUser = () => {
         <h3 className="title-user-remove">
           Deseja realmente remover Nome do Usuário?
         </h3>
-        <button className="btn-remove">Remover</button>
+        <button
+          className="btn-remove"
+          onClick={(e) => userRemove(e, dataRequest.id)}
+        >
+          Remover
+        </button>
       </div>
     </StyleUserRemove>
   );
