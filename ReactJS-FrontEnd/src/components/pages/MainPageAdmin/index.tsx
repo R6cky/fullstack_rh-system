@@ -5,7 +5,7 @@ import { RegisteredUserlist } from "./RegisteredUserList";
 import { StyleMainPageAdmin } from "./style";
 import { CompanyContext } from "../../../context/ContextCompanies";
 import { useContext, useEffect } from "react";
-import { UserContext } from "../../../context/ContextRegisteredusers";
+import { UserContext } from "../../../context/ContextUsers";
 import { ModalContext } from "../../../context/ContextModals";
 import { DepartmentCreate } from "../../Modals/DepartmentCreate";
 

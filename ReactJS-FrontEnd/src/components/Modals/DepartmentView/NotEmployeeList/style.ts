@@ -11,5 +11,6 @@ export const StyleNotEmployeeList = styled.ul`
     align-items: center;
     flex-wrap: wrap;
     overflow-y: scroll;
+    background-color: white;
 
 `

@@ -1,11 +1,27 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NotEmployeeList } from "./NotEmployeeList";
 import { StyleDepartmentView } from "./style";
 import { ModalContext } from "../../../context/ContextModals";
+import { UserContext } from "../../../context/ContextUsers";
+import { CompanyContext } from "../../../context/ContextCompanies";
 
 export const DepartmentView = () => {
-  const { activateModal, modalDepartmentView, setModalDepartmentView } =
-    useContext(ModalContext);
+  const {
+    activateModal,
+    modalDepartmentView,
+    setModalDepartmentView,
+    dataRequest,
+  } = useContext(ModalContext);
+  const { companies } = useContext(CompanyContext);
+
+  const { getUserOutOfWork, usersOutOfWork } = useContext(UserContext);
+
+  const [data, setData] = useState({} as any);
+  useEffect(() => {
+    getUserOutOfWork();
+    setData(dataRequest);
+  }, []);
+
   return (
     <StyleDepartmentView>
       <div className="data-modal-view">
@@ -20,22 +36,34 @@ export const DepartmentView = () => {
           </span>
         </div>
         <div className="header-modal">
-          <h3 className="department-name">Nome do departamento</h3>
-          <span className="department-description">
-            Descrição do departamento
-          </span>
-          <span className="department-owner">Nome da empresa</span>
+          <h3 className="department-name">{data.name}</h3>
+          <span className="department-description">{data.description}</span>
+          {companies.map((company: any) =>
+            company.id === dataRequest.company_id ? (
+              <span className="department-owner" key={company.id}>
+                {company.name}
+              </span>
+            ) : (
+              false
+            )
+          )}
         </div>
 
         <div className="select-area">
           <select name="" id="">
             <option value="">Selecionar usuário</option>
-            <option value="">Usuário 1</option>
-            <option value="">Usuário 2</option>
+            {usersOutOfWork.map((user: any) => {
+              return (
+                <option value={user.id} key={user.id}>
+                  {user.name}
+                </option>
+              );
+            })}
           </select>
           <button className="btn-hire">Contratar</button>
         </div>
       </div>
+
       <NotEmployeeList />
     </StyleDepartmentView>
   );

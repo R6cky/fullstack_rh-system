@@ -10,6 +10,7 @@ export const ModalProvider = ({ children }: any) => {
   const [modalDepartmentRemove, setModalDepartmentRemove] = useState(false);
   const [modalUserEdit, setModalUserEdit] = useState(false);
   const [modalUserDelete, setModalUserDelete] = useState(false);
+  const [modalUserEmployeeRemove, setModalUserEmployeeRemove] = useState(false);
   const [dataRequest, setDataRequest] = useState("");
 
   function activateModal(
@@ -17,7 +18,9 @@ export const ModalProvider = ({ children }: any) => {
     setModalState: any,
     data: any = null
   ) {
-    setDataRequest(data);
+    if (data !== null) {
+      setDataRequest(data);
+    }
     if (modalState) {
       setModalState(false);
     } else {
@@ -140,6 +143,25 @@ export const ModalProvider = ({ children }: any) => {
     }
   }
 
+  async function employeeDisconnect(e: any, id: any) {
+    e.preventDefault();
+    const bearerToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+    try {
+      const request = (
+        await api.delete(`/employees/dismissEmployee/${id}`, {
+          headers: {
+            Authorization: `Bearer ${bearerToken}`,
+          },
+        })
+      ).data;
+      console.log(request);
+      activateModal(modalUserEmployeeRemove, setModalUserEmployeeRemove);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <ModalContext.Provider
       value={{
@@ -150,6 +172,8 @@ export const ModalProvider = ({ children }: any) => {
         modalUserEdit,
         modalUserDelete,
         dataRequest,
+        modalUserEmployeeRemove,
+        setModalUserEmployeeRemove,
         setModalDepartmentView,
         setModalDepartmentCreate,
         setModalDepartmentEdit,
@@ -164,6 +188,7 @@ export const ModalProvider = ({ children }: any) => {
         departmentRemove,
         userRemove,
         departmentView,
+        employeeDisconnect,
       }}
     >
       {children}

@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import { GlobalStyles } from "./globalStyles.tsx";
 import { CompanyProvider } from "./context/ContextCompanies.tsx";
 import { BrowserRouter } from "react-router-dom";
-import { UserProvider } from "./context/ContextRegisteredusers.tsx";
+import { UserProvider } from "./context/ContextUsers.tsx";
 import { ModalProvider } from "./context/ContextModals.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

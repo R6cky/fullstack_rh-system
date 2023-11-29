@@ -30,7 +30,11 @@ export const DepartmentCard = ({ department }: any) => {
             src=""
             alt="img-view"
             onClick={() =>
-              activateModal(modalDepartmentView, setModalDepartmentView)
+              activateModal(
+                modalDepartmentView,
+                setModalDepartmentView,
+                department
+              )
             }
           />
         </span>

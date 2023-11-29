@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { RegisteredUserCard } from "./RegisteredUserCard";
 import { StyleRegisteredUserlist } from "./style";
-import { UserContext } from "../../../../context/ContextRegisteredusers";
+import { UserContext } from "../../../../context/ContextUsers";
 import { UserEdit } from "../../../Modals/UserEdit";
 import { ModalContext } from "../../../../context/ContextModals";
 import { RemoveUser } from "../../../Modals/UserRemove";
