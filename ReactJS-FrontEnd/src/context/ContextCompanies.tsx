@@ -7,6 +7,8 @@ export const CompanyProvider = ({ children }: any) => {
   const [companies, setCompanies] = useState([] as any);
   const [departmentsByCompany, setDepartmentsByCompany] = useState([]);
   const [sectors, setSectors] = useState([] as any);
+  const [dataCompanyById, setDataCompanyById] = useState({} as any);
+  const [dataDepartmentById, setDataDepartmentById] = useState({} as any);
 
   const getCompanies = async () => {
     try {
@@ -45,6 +47,32 @@ export const CompanyProvider = ({ children }: any) => {
     }
   };
 
+  const getCompanyById = async (id: any) => {
+    const bearerToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDE0MzMyOTYsImV4cCI6MTczMjk2OTI5Niwic3ViIjoiMzU0YjE1YWUtNzJhYy00NjRjLWFhMTItMGExMzkwOTJhNTY0In0.GirscYSPrXk_RRxk-p-SMj-ftFBcD8UViD0yPr1pMNs";
+    try {
+      const request = await api.get(`/companies/readById/${id}`, {
+        headers: { Authorization: `Bearer ${bearerToken}` },
+      });
+      setDataCompanyById(request.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getDepartmentById = async (id: any) => {
+    const bearerToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDE0MzMyOTYsImV4cCI6MTczMjk2OTI5Niwic3ViIjoiMzU0YjE1YWUtNzJhYy00NjRjLWFhMTItMGExMzkwOTJhNTY0In0.GirscYSPrXk_RRxk-p-SMj-ftFBcD8UViD0yPr1pMNs";
+    try {
+      const request = await api.get(`/departments/readById/${id}`, {
+        headers: { Authorization: `Bearer ${bearerToken}` },
+      });
+      setDataDepartmentById(request.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <CompanyContext.Provider
       value={{
@@ -52,6 +80,10 @@ export const CompanyProvider = ({ children }: any) => {
         getCompanies,
         getDepartmentByCompany,
         getSectors,
+        getCompanyById,
+        getDepartmentById,
+        dataDepartmentById,
+        dataCompanyById,
         departmentsByCompany,
         sectors,
       }}

@@ -1,9 +1,9 @@
 import { StyleEmployeeCard } from "./style";
 
-export const EmployeeCard = () => {
+export const EmployeeCard = ({ employee }: any) => {
   return (
     <StyleEmployeeCard>
-      <h4 className="employee-name">NomeDoFuncionario</h4>
+      <h4 className="employee-name">{employee.name}</h4>
     </StyleEmployeeCard>
   );
 };

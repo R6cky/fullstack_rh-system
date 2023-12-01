@@ -1,11 +1,15 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { api } from "../services/api";
+import { CompanyContext } from "./ContextCompanies";
 
 export const UserContext = createContext({} as any);
 
 export const UserProvider = ({ children }: any) => {
   const [registeredUsers, setRegisteredUsers] = useState([] as any);
   const [usersOutOfWork, setUsersOutOfWork] = useState([] as any);
+  const [dataOfUserLogged, setDataOfUserLogged] = useState({} as any);
+
+  const { getDepartmentById, getCompanyById } = useContext(CompanyContext);
 
   const getRegisteredUser = async () => {
     const bearerToken: string =
@@ -35,13 +39,31 @@ export const UserProvider = ({ children }: any) => {
     }
   }
 
+  async function getDataOfUserLogged() {
+    const bearerToken: string =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDE0MzMyOTYsImV4cCI6MTczMjk2OTI5Niwic3ViIjoiMzU0YjE1YWUtNzJhYy00NjRjLWFhMTItMGExMzkwOTJhNTY0In0.GirscYSPrXk_RRxk-p-SMj-ftFBcD8UViD0yPr1pMNs";
+
+    try {
+      const request = await api.get("/employees/profile", {
+        headers: { Authorization: `Bearer ${bearerToken}` },
+      });
+      setDataOfUserLogged(request.data);
+      getCompanyById(request.data.company_id);
+      getDepartmentById(request.data.department_id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <UserContext.Provider
       value={{
         registeredUsers,
         getRegisteredUser,
         getUserOutOfWork,
+        getDataOfUserLogged,
         usersOutOfWork,
+        dataOfUserLogged,
       }}
     >
       {children}
