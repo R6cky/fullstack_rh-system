@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { StyleDepartmentCard } from "./style";
 import { ModalContext } from "../../../../../context/ContextModals";
-import { DepartmentEdit } from "../../../../Modals/DepartmentEdit";
+import { CompanyContext } from "../../../../../context/ContextCompanies";
 
 export const DepartmentCard = ({ department }: any) => {
   const {
@@ -12,8 +12,8 @@ export const DepartmentCard = ({ department }: any) => {
     setModalDepartmentEdit,
     modalDepartmentView,
     setModalDepartmentView,
-    departmentRemove,
   } = useContext(ModalContext);
+  const { companies } = useContext(CompanyContext);
 
   return (
     <StyleDepartmentCard>
@@ -21,7 +21,15 @@ export const DepartmentCard = ({ department }: any) => {
       <div className="left-data">
         <h4 className="title-department">{department.name}</h4>
         <p className="description-department">{department.description}</p>
-        <p className="company-name">Company name</p>
+        {companies.map((company: any) =>
+          company.id === department.company_id ? (
+            <span className="department-owner" key={company.id}>
+              {company.name}
+            </span>
+          ) : (
+            false
+          )
+        )}
       </div>
 
       <div className="right-data">

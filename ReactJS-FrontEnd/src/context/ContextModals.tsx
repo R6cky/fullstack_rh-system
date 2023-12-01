@@ -146,17 +146,40 @@ export const ModalProvider = ({ children }: any) => {
   async function employeeDisconnect(e: any, id: any) {
     e.preventDefault();
     const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTkyODg3NTgsImV4cCI6MTczMDgyNDc1OCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.TGuKZdVBrZHYcfQHBwzA3T3GKXsQqgxkSRGHKGalvwg";
     try {
       const request = (
-        await api.delete(`/employees/dismissEmployee/${id}`, {
+        await api.patch(
+          `/employees/dismissEmployee/${id}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${bearerToken}`,
+            },
+          }
+        )
+      ).data;
+      console.log(request);
+      activateModal(modalUserEmployeeRemove, setModalUserEmployeeRemove);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function toHire(e: any, data: any, id: any) {
+    e.preventDefault();
+    const bearerToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTkyODg3NTgsImV4cCI6MTczMDgyNDc1OCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.TGuKZdVBrZHYcfQHBwzA3T3GKXsQqgxkSRGHKGalvwg";
+    try {
+      const request = (
+        await api.patch(`/employees/hireEmployee/${id}`, data, {
           headers: {
             Authorization: `Bearer ${bearerToken}`,
           },
         })
       ).data;
       console.log(request);
-      activateModal(modalUserEmployeeRemove, setModalUserEmployeeRemove);
+      //activateModal(modalUserEmployeeRemove, setModalUserEmployeeRemove);
     } catch (error) {
       console.log(error);
     }
@@ -189,6 +212,7 @@ export const ModalProvider = ({ children }: any) => {
         userRemove,
         departmentView,
         employeeDisconnect,
+        toHire,
       }}
     >
       {children}

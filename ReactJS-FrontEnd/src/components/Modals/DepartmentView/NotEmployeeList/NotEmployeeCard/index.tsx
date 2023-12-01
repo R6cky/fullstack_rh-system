@@ -6,11 +6,11 @@ import { ModalContext } from "../../../../../context/ContextModals";
 export const NotEmployeeCard = ({ userData }: any) => {
   const { modalUserEmployeeRemove, setModalUserEmployeeRemove, activateModal } =
     useContext(ModalContext);
-
   const { companies } = useContext(CompanyContext);
   return (
     <StyleNotEmployeeCard>
       <div className="user-data">
+        {userData.id}
         <h3 className="user-name">{userData.name}</h3>
         {companies.map((company: any) =>
           company.id === userData.company_id ? (
@@ -23,7 +23,11 @@ export const NotEmployeeCard = ({ userData }: any) => {
       <button
         className="btn-dismiss-user"
         onClick={() =>
-          activateModal(modalUserEmployeeRemove, setModalUserEmployeeRemove)
+          activateModal(
+            modalUserEmployeeRemove,
+            setModalUserEmployeeRemove,
+            userData
+          )
         }
       >
         Desligar

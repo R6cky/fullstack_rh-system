@@ -6,6 +6,7 @@ export const CompanyContext = createContext({} as any);
 export const CompanyProvider = ({ children }: any) => {
   const [companies, setCompanies] = useState([] as any);
   const [departmentsByCompany, setDepartmentsByCompany] = useState([]);
+  const [sectors, setSectors] = useState([] as any);
 
   const getCompanies = async () => {
     try {
@@ -35,13 +36,24 @@ export const CompanyProvider = ({ children }: any) => {
     }
   };
 
+  const getSectors = async () => {
+    try {
+      const request = await api.get("categories/readAll");
+      setSectors(request.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <CompanyContext.Provider
       value={{
         companies,
         getCompanies,
         getDepartmentByCompany,
+        getSectors,
         departmentsByCompany,
+        sectors,
       }}
     >
       {children}

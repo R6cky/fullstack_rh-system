@@ -11,12 +11,16 @@ export const DepartmentView = () => {
     modalDepartmentView,
     setModalDepartmentView,
     dataRequest,
+    toHire,
   } = useContext(ModalContext);
   const { companies } = useContext(CompanyContext);
 
   const { getUserOutOfWork, usersOutOfWork } = useContext(UserContext);
 
   const [data, setData] = useState({} as any);
+
+  const [idToHire, setidToHire] = useState({});
+
   useEffect(() => {
     getUserOutOfWork();
     setData(dataRequest);
@@ -39,7 +43,7 @@ export const DepartmentView = () => {
           <h3 className="department-name">{data.name}</h3>
           <span className="department-description">{data.description}</span>
           {companies.map((company: any) =>
-            company.id === dataRequest.company_id ? (
+            company.id === data.company_id ? (
               <span className="department-owner" key={company.id}>
                 {company.name}
               </span>
@@ -50,7 +54,7 @@ export const DepartmentView = () => {
         </div>
 
         <div className="select-area">
-          <select name="" id="">
+          <select name="" id="" onChange={(e) => setidToHire(e.target.value)}>
             <option value="">Selecionar usuário</option>
             {usersOutOfWork.map((user: any) => {
               return (
@@ -60,7 +64,12 @@ export const DepartmentView = () => {
               );
             })}
           </select>
-          <button className="btn-hire">Contratar</button>
+          <button
+            className="btn-hire"
+            onClick={(e) => toHire(e, { department_id: data.id }, idToHire)}
+          >
+            Contratar
+          </button>
         </div>
       </div>
 

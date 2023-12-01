@@ -2,8 +2,18 @@ import { Link } from "react-router-dom";
 import { ListOfCompanies } from "./ListOfCompanies";
 import { StyleHome } from "./style";
 import { Footer } from "../../Footer";
+import { useContext, useEffect, useState } from "react";
+import { CompanyContext } from "../../../context/ContextCompanies";
 
 export const Home = () => {
+  const { sectors, getSectors } = useContext(CompanyContext);
+
+  const [dataSector, setDataSector] = useState({} as any);
+
+  useEffect(() => {
+    getSectors();
+  }, []);
+
   return (
     <StyleHome>
       <header className="header-default-page">
@@ -26,12 +36,18 @@ export const Home = () => {
           <img src="" alt="Imagem aqui" />
         </div>
         <div className="container-data-right">
-          <select name="" id="">
-            <option value="">Selecione o setor</option>
-            <option value="">Categoria 2</option>
+          <select name="" id="" onChange={(e) => setDataSector(e.target.value)}>
+            <option value="Selecione o setor">Selecione o setor</option>;
+            {sectors.map((sector: any) => {
+              return (
+                <option value={sector.id} key={sector.id}>
+                  {sector.name}
+                </option>
+              );
+            })}
           </select>
           <h3>Lista de empresas</h3>
-          <ListOfCompanies />
+          <ListOfCompanies sector={dataSector} />
         </div>
       </div>
       <Footer />

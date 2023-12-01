@@ -1,12 +1,20 @@
-import { StyleCardOfCompanies} from "./style"
+import { useContext } from "react";
+import { StyleCardOfCompanies } from "./style";
+import { CompanyContext } from "../../../../../context/ContextCompanies";
 
-export const CardOfCompanies = () => {
-    return (
-        <>
-            <StyleCardOfCompanies>
-                <h4>nome da empresa</h4>
-                <h5>setor</h5>
-            </StyleCardOfCompanies>
-        </>
-    )
-}
+export const CardOfCompanies = ({ company }: any) => {
+  const { sectors } = useContext(CompanyContext);
+  console.log("hello", sectors);
+  return (
+    <StyleCardOfCompanies>
+      <h4>{company.name}</h4>
+      {sectors.map((sector: any) =>
+        sector.id === company.category_id ? (
+          <h5 key={sector.id}>{sector.name}</h5>
+        ) : (
+          false
+        )
+      )}
+    </StyleCardOfCompanies>
+  );
+};
