@@ -80,6 +80,7 @@ export const Register = () => {
           </form>
         </div>
       </div>
+
       <Footer />
     </StyleRegister>
   );
