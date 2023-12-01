@@ -55,6 +55,27 @@ export const UserProvider = ({ children }: any) => {
     }
   }
 
+  async function userRegister(e: any, data: any) {
+    e.preventDefault();
+    console.log(data);
+    try {
+      const request = (await api.post(`/employees/create`, data)).data;
+      console.log(request);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function userLogin(e: any, data: any) {
+    e.preventDefault();
+    try {
+      const request = (await api.post(`/auth/login`, data)).data;
+      console.log(request);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -62,6 +83,8 @@ export const UserProvider = ({ children }: any) => {
         getRegisteredUser,
         getUserOutOfWork,
         getDataOfUserLogged,
+        userRegister,
+        userLogin,
         usersOutOfWork,
         dataOfUserLogged,
       }}

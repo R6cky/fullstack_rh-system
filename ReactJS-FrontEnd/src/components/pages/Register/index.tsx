@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom";
 import { StyleRegister } from "./style";
 import { Footer } from "../../Footer";
+import { useContext, useState } from "react";
+import { UserContext } from "../../../context/ContextUsers";
 
 export const Register = () => {
+  const { userRegister } = useContext(UserContext);
+
+  const [userData, setuserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  } as any);
+
   return (
     <StyleRegister>
       <header className="header-default-page">
@@ -25,17 +35,47 @@ export const Register = () => {
         <h3 className="title-register">Cadastre-se</h3>
 
         <div className="input-area">
-          <form action="">
+          <form action="" onSubmit={(e) => userRegister(e, userData)}>
             <div className="input-area-input">
-              <input type="text" placeholder="Seu nome" />
-              <input type="text" placeholder="Seu e-mail" />
-              <input type="text" placeholder="Sua senha" />
+              <input
+                type="text"
+                placeholder="Seu nome"
+                onChange={(e) =>
+                  setuserData({
+                    name: e.target.value,
+                    email: userData.email,
+                    password: userData.passsword,
+                  })
+                }
+              />
+              <input
+                type="text"
+                placeholder="Seu e-mail"
+                onChange={(e) =>
+                  setuserData({
+                    name: userData.name,
+                    email: e.target.value,
+                    password: userData.passsword,
+                  })
+                }
+              />
+              <input
+                type="password"
+                placeholder="Sua senha"
+                onChange={(e) =>
+                  setuserData({
+                    name: userData.name,
+                    email: userData.email,
+                    password: e.target.value,
+                  })
+                }
+              />
             </div>
 
             <div className="input-area-button">
               <button>Cadastrar</button>
               <p>Ou</p>
-              <button>Retornar</button>
+              <button onClick={(e) => e.preventDefault()}>Retornar</button>
             </div>
           </form>
         </div>
