@@ -1,6 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import { api } from "../services/api";
 import { CompanyContext } from "./ContextCompanies";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./ContextAuth";
 
 export const UserContext = createContext({} as any);
 
@@ -10,14 +12,16 @@ export const UserProvider = ({ children }: any) => {
   const [dataOfUserLogged, setDataOfUserLogged] = useState({} as any);
 
   const { getDepartmentById, getCompanyById } = useContext(CompanyContext);
+  const { userIsAuthenticated, isAdmin } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const getRegisteredUser = async () => {
-    const bearerToken: string =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTkyODg3NTgsImV4cCI6MTczMDgyNDc1OCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.TGuKZdVBrZHYcfQHBwzA3T3GKXsQqgxkSRGHKGalvwg";
+    const token = localStorage.getItem("token");
 
     try {
       const request = await api.get("/employees/readAll", {
-        headers: { Authorization: `Bearer ${bearerToken}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       setRegisteredUsers(request.data);
     } catch (error) {
@@ -26,12 +30,11 @@ export const UserProvider = ({ children }: any) => {
   };
 
   async function getUserOutOfWork() {
-    const bearerToken: string =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTkyODg3NTgsImV4cCI6MTczMDgyNDc1OCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.TGuKZdVBrZHYcfQHBwzA3T3GKXsQqgxkSRGHKGalvwg";
+    const token = localStorage.getItem("token");
 
     try {
       const request = await api.get("/employees/outOfWork", {
-        headers: { Authorization: `Bearer ${bearerToken}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       setUsersOutOfWork(request.data);
     } catch (error) {
@@ -40,12 +43,11 @@ export const UserProvider = ({ children }: any) => {
   }
 
   async function getDataOfUserLogged() {
-    const bearerToken: string =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDE0MzMyOTYsImV4cCI6MTczMjk2OTI5Niwic3ViIjoiMzU0YjE1YWUtNzJhYy00NjRjLWFhMTItMGExMzkwOTJhNTY0In0.GirscYSPrXk_RRxk-p-SMj-ftFBcD8UViD0yPr1pMNs";
+    const token = localStorage.getItem("token");
 
     try {
       const request = await api.get("/employees/profile", {
-        headers: { Authorization: `Bearer ${bearerToken}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       setDataOfUserLogged(request.data);
       getCompanyById(request.data.company_id);
@@ -60,7 +62,7 @@ export const UserProvider = ({ children }: any) => {
     console.log(data);
     try {
       const request = (await api.post(`/employees/create`, data)).data;
-      console.log(request);
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -68,9 +70,17 @@ export const UserProvider = ({ children }: any) => {
 
   async function userLogin(e: any, data: any) {
     e.preventDefault();
+
     try {
       const request = (await api.post(`/auth/login`, data)).data;
-      console.log(request);
+      localStorage.setItem("token", request.authToken);
+      localStorage.setItem("isAdmin", request.isAdm);
+      if (userIsAuthenticated() && isAdmin() === "false") {
+        navigate("/homeUser");
+      }
+      if (userIsAuthenticated() && isAdmin() === "true") {
+        navigate("/homeAdmin");
+      }
     } catch (error) {
       console.log(error);
     }

@@ -28,33 +28,32 @@ export const ModalProvider = ({ children }: any) => {
     }
   }
 
-  async function departmentView(e: any, data: any) {
-    e.preventDefault();
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
-    // try {
-    //   const request = (
-    //     await api.post("/departments/create", data, {
-    //       headers: {
-    //         Authorization: `Bearer ${bearerToken}`,
-    //       },
-    //     })
-    //   ).data;
-    //   activateModal(modalDepartmentCreate, setModalDepartmentCreate);
-    //   console.log(request);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  }
+  // async function departmentView(e: any, data: any) {
+  //   e.preventDefault();
+  //   const bearerToken =
+  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+  //   try {
+  //     const request = (
+  //       await api.post("/departments/create", data, {
+  //         headers: {
+  //           Authorization: `Bearer ${bearerToken}`,
+  //         },
+  //       })
+  //     ).data;
+  //     activateModal(modalDepartmentCreate, setModalDepartmentCreate);
+  //     console.log(request);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   async function departmentCreate(e: any, data: any) {
     e.preventDefault();
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+    const token = localStorage.getItem("token");
     try {
       const request = (
         await api.post("/departments/create", data, {
           headers: {
-            Authorization: `Bearer ${bearerToken}`,
+            Authorization: `Bearer ${token}`,
           },
         })
       ).data;
@@ -67,14 +66,12 @@ export const ModalProvider = ({ children }: any) => {
 
   async function departmentEdit(e: any, id: any, data: any) {
     e.preventDefault();
-    console.log(id);
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+    const token = localStorage.getItem("token");
     try {
       const request = (
         await api.patch(`/departments/update/${id}`, data, {
           headers: {
-            Authorization: `Bearer ${bearerToken}`,
+            Authorization: `Bearer ${token}`,
           },
         })
       ).data;
@@ -87,14 +84,12 @@ export const ModalProvider = ({ children }: any) => {
 
   async function departmentRemove(e: any, id: any) {
     e.preventDefault();
-    console.log(id);
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+    const token = localStorage.getItem("token");
     try {
       const request = (
         await api.delete(`/departments/delete/${id}`, {
           headers: {
-            Authorization: `Bearer ${bearerToken}`,
+            Authorization: `Bearer ${token}`,
           },
         })
       ).data;
@@ -107,13 +102,12 @@ export const ModalProvider = ({ children }: any) => {
 
   async function userEdit(e: any, data: any, id: any) {
     e.preventDefault();
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+    const token = localStorage.getItem("token");
     try {
       const request = (
         await api.patch(`/employees/updateEmployee/${id}`, data, {
           headers: {
-            Authorization: `Bearer ${bearerToken}`,
+            Authorization: `Bearer ${token}`,
           },
         })
       ).data;
@@ -126,13 +120,13 @@ export const ModalProvider = ({ children }: any) => {
 
   async function userRemove(e: any, id: any) {
     e.preventDefault();
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
+
+    const token = localStorage.getItem("token");
     try {
       const request = (
         await api.delete(`/employees/deleteEmployee/${id}`, {
           headers: {
-            Authorization: `Bearer ${bearerToken}`,
+            Authorization: `Bearer ${token}`,
           },
         })
       ).data;
@@ -145,8 +139,7 @@ export const ModalProvider = ({ children }: any) => {
 
   async function employeeDisconnect(e: any, id: any) {
     e.preventDefault();
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTkyODg3NTgsImV4cCI6MTczMDgyNDc1OCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.TGuKZdVBrZHYcfQHBwzA3T3GKXsQqgxkSRGHKGalvwg";
+    const token = localStorage.getItem("token");
     try {
       const request = (
         await api.patch(
@@ -154,7 +147,7 @@ export const ModalProvider = ({ children }: any) => {
           {},
           {
             headers: {
-              Authorization: `Bearer ${bearerToken}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         )
@@ -168,13 +161,13 @@ export const ModalProvider = ({ children }: any) => {
 
   async function toHire(e: any, data: any, id: any) {
     e.preventDefault();
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTkyODg3NTgsImV4cCI6MTczMDgyNDc1OCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.TGuKZdVBrZHYcfQHBwzA3T3GKXsQqgxkSRGHKGalvwg";
+    const token = localStorage.getItem("token");
+
     try {
       const request = (
         await api.patch(`/employees/hireEmployee/${id}`, data, {
           headers: {
-            Authorization: `Bearer ${bearerToken}`,
+            Authorization: `Bearer ${token}`,
           },
         })
       ).data;
@@ -210,7 +203,7 @@ export const ModalProvider = ({ children }: any) => {
         setDataRequest,
         departmentRemove,
         userRemove,
-        departmentView,
+        //departmentView,
         employeeDisconnect,
         toHire,
       }}

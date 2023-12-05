@@ -1,15 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { Home } from "../components/pages/Home";
 import { Login } from "../components/pages/Login";
 import { Register } from "../components/pages/Register";
 import { MainPageAdmin } from "../components/pages/MainPageAdmin";
 import { MainPageUser } from "../components/pages/MainPageUser";
-import { DepartmentView } from "../components/Modals/DepartmentView";
-import { DepartmentCreate } from "../components/Modals/DepartmentCreate";
-import { DepartmentEdit } from "../components/Modals/DepartmentEdit";
-import { DepartmentRemove } from "../components/Modals/DepartmentRemove";
-import { UserEdit } from "../components/Modals/UserEdit";
-import { RemoveUser } from "../components/Modals/UserRemove";
+import { AuthContext } from "../context/ContextAuth";
 
 export const RoutesMain: any = () => {
   return (

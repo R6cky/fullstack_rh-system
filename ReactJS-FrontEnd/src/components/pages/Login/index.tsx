@@ -1,13 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StyleLogin } from "./style";
 import { Footer } from "../../Footer";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../context/ContextUsers";
+import { AuthContext } from "../../../context/ContextAuth";
 
 export const Login = () => {
   const { userLogin } = useContext(UserContext);
+  const { userIsAuthenticated, isAdmin } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({ email: "", password: "" });
+
+  useEffect(() => {
+    if (userIsAuthenticated() && isAdmin() === "true") {
+      navigate("/homeAdmin");
+    }
+
+    if (userIsAuthenticated() && isAdmin() === "false") {
+      navigate("/homeUser");
+    }
+  }, []);
 
   return (
     <StyleLogin>
@@ -45,7 +58,7 @@ export const Login = () => {
                 }
               />
               <input
-                type="text"
+                type="password"
                 placeholder="Sua senha"
                 onChange={(e) =>
                   setUserData({

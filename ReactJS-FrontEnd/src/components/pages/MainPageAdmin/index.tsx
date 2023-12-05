@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "../../Footer";
 import { DepartmentList } from "./DepartmentList";
 import { RegisteredUserlist } from "./RegisteredUserList";
@@ -8,6 +8,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../../../context/ContextUsers";
 import { ModalContext } from "../../../context/ContextModals";
 import { DepartmentCreate } from "../../Modals/DepartmentCreate";
+import { AuthContext } from "../../../context/ContextAuth";
 
 export const MainPageAdmin = () => {
   const { getCompanies, companies, getDepartmentByCompany } =
@@ -16,9 +17,27 @@ export const MainPageAdmin = () => {
   const { modalDepartmentCreate, setModalDepartmentCreate, activateModal } =
     useContext(ModalContext);
 
+  const { isAdmin, userIsAuthenticated, logout } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     getCompanies();
     getRegisteredUser();
+  }, []);
+
+  useEffect(() => {
+    if (!userIsAuthenticated()) {
+      navigate("/login");
+    }
+
+    if (userIsAuthenticated() && isAdmin() === "true") {
+      navigate("/homeAdmin");
+    }
+
+    if (userIsAuthenticated() && isAdmin() === "false") {
+      navigate("/homeUser");
+    }
   }, []);
 
   return (
@@ -26,8 +45,13 @@ export const MainPageAdmin = () => {
       <header className="header-default-page">
         <div className="company-name">RH system</div>
         <div className="buttons-right-area">
-          <button className="login-button">
-            <Link to={"/"}>Logout</Link>
+          <button
+            className="login-button"
+            onClick={() => {
+              logout();
+            }}
+          >
+            Logout
           </button>
         </div>
       </header>

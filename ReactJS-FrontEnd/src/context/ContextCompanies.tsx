@@ -20,8 +20,7 @@ export const CompanyProvider = ({ children }: any) => {
   };
 
   const getDepartmentByCompany = async (companyId: any) => {
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk0NDg0MjUsImV4cCI6MTczMDk4NDQyNSwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.V9pgYKHRWHwU6t_fMgMjiN_qjmIiDX6PVlar_r9Hv1Q";
+    const token = localStorage.getItem("token");
 
     if (companyId === "Selecionar empresa") {
       return;
@@ -29,7 +28,7 @@ export const CompanyProvider = ({ children }: any) => {
 
     try {
       const request = await api.get(`/departments/readByCompany/${companyId}`, {
-        headers: { Authorization: `Bearer ${bearerToken}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       setDepartmentsByCompany(request.data);
@@ -48,11 +47,11 @@ export const CompanyProvider = ({ children }: any) => {
   };
 
   const getCompanyById = async (id: any) => {
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDE0MzMyOTYsImV4cCI6MTczMjk2OTI5Niwic3ViIjoiMzU0YjE1YWUtNzJhYy00NjRjLWFhMTItMGExMzkwOTJhNTY0In0.GirscYSPrXk_RRxk-p-SMj-ftFBcD8UViD0yPr1pMNs";
+    const token = localStorage.getItem("token");
+
     try {
       const request = await api.get(`/companies/readById/${id}`, {
-        headers: { Authorization: `Bearer ${bearerToken}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       setDataCompanyById(request.data);
     } catch (error) {
@@ -61,11 +60,10 @@ export const CompanyProvider = ({ children }: any) => {
   };
 
   const getDepartmentById = async (id: any) => {
-    const bearerToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDE0MzMyOTYsImV4cCI6MTczMjk2OTI5Niwic3ViIjoiMzU0YjE1YWUtNzJhYy00NjRjLWFhMTItMGExMzkwOTJhNTY0In0.GirscYSPrXk_RRxk-p-SMj-ftFBcD8UViD0yPr1pMNs";
+    const token = localStorage.getItem("token");
     try {
       const request = await api.get(`/departments/readById/${id}`, {
-        headers: { Authorization: `Bearer ${bearerToken}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       setDataDepartmentById(request.data);
     } catch (error) {
