@@ -4,7 +4,6 @@ import { CompanyContext } from "../../../../../context/ContextCompanies";
 
 export const CardOfCompanies = ({ company }: any) => {
   const { sectors } = useContext(CompanyContext);
-  console.log("hello", sectors);
   return (
     <StyleCardOfCompanies>
       <h4>{company.name}</h4>

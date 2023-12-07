@@ -170,7 +170,6 @@ export const ModalProvider = ({ children }: any) => {
       getUserOutOfWork();
       getRegisteredUser();
       console.log(request);
-      //activateModal(modalUserEmployeeRemove, setModalUserEmployeeRemove);
     } catch (error) {
       console.log(error);
     }
