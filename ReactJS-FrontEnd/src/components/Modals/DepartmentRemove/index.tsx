@@ -32,7 +32,7 @@ export const DepartmentRemove = () => {
         </h3>
         <button
           className="btn-remove"
-          onClick={(e) => departmentRemove(e, dataRequest.id)}
+          onClick={(e) => departmentRemove(e, dataRequest)}
         >
           Remover
         </button>

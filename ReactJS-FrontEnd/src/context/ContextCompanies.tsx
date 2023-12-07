@@ -30,8 +30,8 @@ export const CompanyProvider = ({ children }: any) => {
       const request = await api.get(`/departments/readByCompany/${companyId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
       setDepartmentsByCompany(request.data);
+      return request.data;
     } catch (error) {
       console.log(error);
     }
@@ -80,6 +80,7 @@ export const CompanyProvider = ({ children }: any) => {
         getSectors,
         getCompanyById,
         getDepartmentById,
+        setDepartmentsByCompany,
         dataDepartmentById,
         dataCompanyById,
         departmentsByCompany,

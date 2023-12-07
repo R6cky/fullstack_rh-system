@@ -1,5 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { api } from "../services/api";
+import { CompanyContext } from "./ContextCompanies";
+import { UserContext } from "./ContextUsers";
 
 export const ModalContext = createContext({} as any);
 
@@ -12,6 +14,14 @@ export const ModalProvider = ({ children }: any) => {
   const [modalUserDelete, setModalUserDelete] = useState(false);
   const [modalUserEmployeeRemove, setModalUserEmployeeRemove] = useState(false);
   const [dataRequest, setDataRequest] = useState("");
+
+  const {
+    setDepartmentsByCompany,
+    departmentsByCompany,
+    getDepartmentByCompany,
+  } = useContext(CompanyContext);
+
+  const { getRegisteredUser, getUserOutOfWork } = useContext(UserContext);
 
   function activateModal(
     modalState: any,
@@ -28,24 +38,6 @@ export const ModalProvider = ({ children }: any) => {
     }
   }
 
-  // async function departmentView(e: any, data: any) {
-  //   e.preventDefault();
-  //   const bearerToken =
-  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTk4MTQxOTQsImV4cCI6MTczMTM1MDE5NCwic3ViIjoiYzlkN2Y0NTgtNWNkOS00M2I2LThjMTItZjk5ZDliNWFkNGY2In0.mu1zWkUsB6w2fMC9xjNB_ftIWoN9p2CkYSjxNaST0rk";
-  //   try {
-  //     const request = (
-  //       await api.post("/departments/create", data, {
-  //         headers: {
-  //           Authorization: `Bearer ${bearerToken}`,
-  //         },
-  //       })
-  //     ).data;
-  //     activateModal(modalDepartmentCreate, setModalDepartmentCreate);
-  //     console.log(request);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
   async function departmentCreate(e: any, data: any) {
     e.preventDefault();
     const token = localStorage.getItem("token");
@@ -57,6 +49,7 @@ export const ModalProvider = ({ children }: any) => {
           },
         })
       ).data;
+      setDepartmentsByCompany([...departmentsByCompany, request]);
       activateModal(modalDepartmentCreate, setModalDepartmentCreate);
       console.log(request);
     } catch (error) {
@@ -75,25 +68,32 @@ export const ModalProvider = ({ children }: any) => {
           },
         })
       ).data;
-      console.log(request);
+
+      const departmentsByCompanyUpdated = await getDepartmentByCompany(
+        request.department.company_id
+      );
+      setDepartmentsByCompany(departmentsByCompanyUpdated);
       activateModal(modalDepartmentEdit, setModalDepartmentEdit);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function departmentRemove(e: any, id: any) {
+  async function departmentRemove(e: any, departmentData: any) {
     e.preventDefault();
     const token = localStorage.getItem("token");
+    console.log(departmentData);
     try {
-      const request = (
-        await api.delete(`/departments/delete/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-      ).data;
-      console.log(request);
+      await api.delete(`/departments/delete/${departmentData.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const departmentsByCompanyUpdated = await getDepartmentByCompany(
+        departmentData.company_id
+      );
+      setDepartmentsByCompany(departmentsByCompanyUpdated);
       activateModal(modalDepartmentRemove, setModalDepartmentRemove);
     } catch (error) {
       console.log(error);
@@ -104,14 +104,12 @@ export const ModalProvider = ({ children }: any) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
     try {
-      const request = (
-        await api.patch(`/employees/updateEmployee/${id}`, data, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-      ).data;
-      console.log(request);
+      await api.patch(`/employees/updateEmployee/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      await getRegisteredUser();
       activateModal(modalUserEdit, setModalUserEdit);
     } catch (error) {
       console.log(error);
@@ -123,14 +121,12 @@ export const ModalProvider = ({ children }: any) => {
 
     const token = localStorage.getItem("token");
     try {
-      const request = (
-        await api.delete(`/employees/deleteEmployee/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-      ).data;
-      console.log(request);
+      await api.delete(`/employees/deleteEmployee/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      await getRegisteredUser();
       activateModal(modalUserDelete, setModalUserDelete);
     } catch (error) {
       console.log(error);
@@ -141,18 +137,18 @@ export const ModalProvider = ({ children }: any) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
     try {
-      const request = (
-        await api.patch(
-          `/employees/dismissEmployee/${id}`,
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-      ).data;
-      console.log(request);
+      await api.patch(
+        `/employees/dismissEmployee/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      getRegisteredUser();
+      getUserOutOfWork();
       activateModal(modalUserEmployeeRemove, setModalUserEmployeeRemove);
     } catch (error) {
       console.log(error);
@@ -171,6 +167,8 @@ export const ModalProvider = ({ children }: any) => {
           },
         })
       ).data;
+      getUserOutOfWork();
+      getRegisteredUser();
       console.log(request);
       //activateModal(modalUserEmployeeRemove, setModalUserEmployeeRemove);
     } catch (error) {

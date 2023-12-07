@@ -13,13 +13,13 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <GlobalStyles />
       <AuthProvider>
-        <ModalProvider>
-          <CompanyProvider>
-            <UserProvider>
+        <CompanyProvider>
+          <UserProvider>
+            <ModalProvider>
               <App />
-            </UserProvider>
-          </CompanyProvider>
-        </ModalProvider>
+            </ModalProvider>
+          </UserProvider>
+        </CompanyProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
