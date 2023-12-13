@@ -71,7 +71,7 @@ export const Login = () => {
 
             <div className="input-area-button">
               <button>Login</button>
-              <p>Ou</p>
+              <span className="or">Ou</span>
               <button>
                 <Link className="redirect-link" to={"/register"}>
                   Cadastre-se

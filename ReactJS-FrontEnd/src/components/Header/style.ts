@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyleHeader = styled.header`
-
+/* 
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -15,7 +15,7 @@ export const StyleHeader = styled.header`
             display: flex;
             justify-content: space-around;
             align-items: center;
-        }
+        } */
 
 
 `

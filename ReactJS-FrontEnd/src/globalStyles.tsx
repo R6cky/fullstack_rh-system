@@ -5,8 +5,9 @@ export const GlobalStyles = createGlobalStyle`
     :root {
         
         box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Inter', sans-serif;
 
         body{
             width: 100%;
@@ -27,9 +28,13 @@ export const GlobalStyles = createGlobalStyle`
         select{
             cursor: pointer;
         }
+
+        a{
+            text-decoration: none;
+        }
         
         --blue: #0000FF;
-        --black:#FFFF;
+        --white:#FFFF;
         --yellow:#FFAB00;
         --green:#36B37E;
         --oranje:#FF5630;
