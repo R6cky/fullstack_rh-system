@@ -24,7 +24,6 @@ export const RegisteredUserCard = ({ user }: any) => {
     <StyleRegisteredUserCard>
       <div className="left-data">
         <h4 className="user-name">{user.name}</h4>
-        {user.id}
         {companyName.length === 0 ? (
           <span className="company-name-null">Sem vínculo com empresa </span>
         ) : (

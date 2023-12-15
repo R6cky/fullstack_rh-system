@@ -17,7 +17,6 @@ export const DepartmentCard = ({ department }: any) => {
 
   return (
     <StyleDepartmentCard>
-      {department.id}
       <div className="left-data">
         <h4 className="title-department">{department.name}</h4>
         <p className="description-department">{department.description}</p>

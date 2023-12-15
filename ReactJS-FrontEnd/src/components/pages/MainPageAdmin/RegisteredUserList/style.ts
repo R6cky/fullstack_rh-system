@@ -12,4 +12,6 @@ export const StyleRegisteredUserlist = styled.ul`
     overflow-y: scroll;
     margin: 20px 0px ;
 
+
+    
 `
