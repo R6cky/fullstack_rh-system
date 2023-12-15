@@ -46,7 +46,7 @@ export const MainPageAdmin = () => {
         <div className="company-name">RH system</div>
         <div className="buttons-right-area">
           <button
-            className="login-button"
+            className="logout-button"
             onClick={() => {
               logout();
             }}
@@ -59,6 +59,7 @@ export const MainPageAdmin = () => {
       <div className="admin-page-container">
         <div className="select-company">
           <select
+            className="select-company"
             name=""
             onChange={(e) => getDepartmentByCompany(e.target.value)}
           >

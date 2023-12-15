@@ -71,10 +71,9 @@ export const Register = () => {
                 }
               />
             </div>
-
+            <hr />
             <div className="input-area-button">
               <button>Cadastrar</button>
-              <p>Ou</p>
               <button onClick={(e) => e.preventDefault()}>Retornar</button>
             </div>
           </form>

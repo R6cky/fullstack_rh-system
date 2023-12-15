@@ -4,7 +4,6 @@ import { Login } from "../components/pages/Login";
 import { Register } from "../components/pages/Register";
 import { MainPageAdmin } from "../components/pages/MainPageAdmin";
 import { MainPageUser } from "../components/pages/MainPageUser";
-import { AuthContext } from "../context/ContextAuth";
 
 export const RoutesMain: any = () => {
   return (
