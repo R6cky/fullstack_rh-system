@@ -3,7 +3,9 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 
     :root {
-        
+        width: 100vw;
+        max-width: 100%;
+        height: 100vh;
         box-sizing: border-box;
         margin: 0px;
         padding: 0px;
@@ -38,6 +40,7 @@ export const GlobalStyles = createGlobalStyle`
         --yellow:#FFAB00;
         --green:#36B37E;
         --oranje:#FF5630;
+        --purple:#7A1CBD;
 
         
 

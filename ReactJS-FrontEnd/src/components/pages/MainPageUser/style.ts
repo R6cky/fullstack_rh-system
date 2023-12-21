@@ -31,12 +31,12 @@ export const StyleMainPageUser = styled.div`
                 .logout-button{
                     width: 9rem;
                     height: 3rem;
-                    border: solid 1px var(--blue);
+                    border: none;
                     border-radius: 4px;
                     font-size: 1.2rem;
-                    :visited{
-                    color: var(--blue);
-                    }
+                    background-color: var(--purple);
+                    color: white;
+                    font-weight: bold;
 
                     
                     a{
@@ -53,19 +53,10 @@ export const StyleMainPageUser = styled.div`
 
 
                 }
-                .redirect-link{
-
-                    
-                    :visited{
-                        color: black;
-                    }
-
-                    
-                }
+                
         }
 
     .user-page-container{
-        border: solid green 3px;
         width: 100%;
         max-width: 100%;
         height: 100%;
@@ -76,16 +67,22 @@ export const StyleMainPageUser = styled.div`
 
 
         .userdata-area{
-            border: solid brown;
+            
             width: 100%;
             height: 10  0px;
             display: flex;
             justify-content: center;
             align-items: center;
 
+            
+
             .user-data{
-                border: solid;
                 width: 800px;
+                margin-top: 10px;
+                padding: 5px;
+                -webkit-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
+                box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
 
             }
         }
@@ -95,15 +92,20 @@ export const StyleMainPageUser = styled.div`
 
 
         .data-employees{
-            border: solid rosybrown;
             width: 800px;
             max-width: 100%;
+
+                
+            -webkit-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
+             -moz-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
+             box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
             
             
 
             .company-name{
                 width: 800px;
                 height: 3rem;
+                font-size: 20px;
                 display: flex;
                 justify-content: center;
                 align-items: center ;

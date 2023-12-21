@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyleDepartmentList = styled.ul`
-    border: solid ;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;

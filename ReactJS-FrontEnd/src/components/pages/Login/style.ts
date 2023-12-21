@@ -33,11 +33,14 @@ export const StyleLogin = styled.div`
             button{
                 width: 9rem;
                 height: 3rem;
-                border: solid 1px var(--blue);
+                background-color: var(--purple);
+                color: var(--white);
                 border-radius: 4px;
+                border: none;
                 font-size: 1.2rem;
+                font-weight: bold;
                 :visited{
-                    color: var(--blue);
+                    color: var(--white);
                 }
 
             }

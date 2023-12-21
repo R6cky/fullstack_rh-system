@@ -37,11 +37,14 @@ export const StyleRegister = styled.div`
             button{
                 width: 9rem;
                 height: 3rem;
-                border: solid 1px var(--blue);
+                border: none;
+                font-weight: bold;
                 border-radius: 4px;
                 font-size: 1.2rem;
+                background-color: var(--purple);
+                color: var(--white);
                 :visited{
-                    color: var(--blue);
+                    color: var(--white);
                 }
 
             }

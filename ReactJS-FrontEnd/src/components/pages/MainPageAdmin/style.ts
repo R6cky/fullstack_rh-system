@@ -15,7 +15,6 @@ export const StyleMainPageAdmin = styled.div`
     }
 
     .buttons-right-area{
-
         width: 300px;
         display: flex;
         justify-content: space-around;
@@ -26,9 +25,13 @@ export const StyleMainPageAdmin = styled.div`
     .logout-button{
         width: 9rem;
         height: 3rem;
-        border: solid 1px var(--blue);
+        border:  none;
+        background: var(--purple);
+        color: var(--white);
+        font-weight: bold;
         border-radius: 4px;
         font-size: 1.2rem;
+        
         
 
         
@@ -46,15 +49,7 @@ export const StyleMainPageAdmin = styled.div`
 
 
     }
-    .redirect-link{
-
-        
-        :visited{
-            color: black;
-        }
-
-        
-    }
+  
     }
 
     .admin-page-container{
@@ -73,15 +68,18 @@ export const StyleMainPageAdmin = styled.div`
             justify-content: flex-end;
             align-items: center;
             max-width: 100%;
+            margin-top: 20px;
             
 
             select{
                 width: 300px;
+                max-width: 100%;
                 height: 45px;
-                background-color: var(--blue);
+                background-color: var(--purple);
                 color: white;
                 font-weight: bold;
                 font-size: 16px;
+                border: none;
             }
 
         }
@@ -104,8 +102,9 @@ export const StyleMainPageAdmin = styled.div`
             .btn-create-department{
                 width: 7rem;
                 height: 2.5rem;
-                border: solid 1px var(--blue);
-                color: var(--blue);
+                border:none;
+                background: var(--purple);
+                color: var(--white);
                 display: flex;
                 justify-content: center;
                 align-items: center;

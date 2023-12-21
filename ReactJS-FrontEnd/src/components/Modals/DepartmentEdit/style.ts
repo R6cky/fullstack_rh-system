@@ -2,21 +2,19 @@ import styled from "styled-components";
 
 export const StyleDepartmentEdit = styled.div`
 
-    border:  solid green;
     width: 100%;
-    max-width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    background: rgba(0, 0, 0, 0.8);
+        height: 100%;
+        display: flex;
+        justify-content:center;
+        align-items: normal;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.8);
   
 
     .close-modal{
-        border: solid;
         width: 100%;
         height: 40px;
         display: flex;
@@ -24,7 +22,7 @@ export const StyleDepartmentEdit = styled.div`
 
         span{
             border-radius: 50%;
-            border: solid ;
+            border: solid var(--purple) 1px;
             width: 40px;
             height: 40px;
             display: flex;
@@ -32,32 +30,46 @@ export const StyleDepartmentEdit = styled.div`
             align-items: center;
             background: white;
             cursor: pointer;
+            color: var(--purple);
+            margin: 5px;
+        }
+        span:hover{
+                background-color: var(--purple);
+                color: var(--white);
         }
     }
 
     .form-area{
-        border: solid red;
+        margin-top: 50px;
         width: 500px;
         max-width: 100%;
         height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--white);
+        border-radius: 8px;
+
 
         .title-department-edit{
             text-align: center;
+            color: var(--purple);
         }
 
         form{
-            border: solid red;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
             width: 100%;
-            height: 200px;
+            height: 150px;
  
             input{
                 width: 250px;
                 max-width: 100%;
                 height: 35px;
+                border: solid var(--purple) 1px;
+                border-radius: 4px;
             }
 
             button{

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyleEmployeeCard = styled.div`
 
-border: solid red;
+border: solid 1px var(--blue);
 width: 250px;
 max-width: 100%;
 height: 100px;

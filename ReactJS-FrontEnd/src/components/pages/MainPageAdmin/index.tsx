@@ -50,6 +50,7 @@ export const MainPageAdmin = () => {
             onClick={() => {
               logout();
             }}
+            about="asas"
           >
             Logout
           </button>

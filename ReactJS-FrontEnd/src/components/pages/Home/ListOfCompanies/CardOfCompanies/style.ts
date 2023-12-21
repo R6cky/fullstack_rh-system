@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyleCardOfCompanies = styled.li`
 
-    border: solid  1px var(--blue);
+    border: solid  1px var(--purple);
     width: 90%;
     max-width: 100%;
     height: 100px;
@@ -15,17 +15,18 @@ export const StyleCardOfCompanies = styled.li`
 
 
     .sector-area{
-        width: 6rem;
+        width: 4rem;
         max-width: 100%;
-        height: 1.2rem;
+        height: 0.9rem;
         border-radius: 6px;
-        border: solid 1px var(--blue) ;
+        background: var(--purple) ;
+        color: white;
         padding: 5px;
         margin-left: 3px;
         display: flex;
         align-items: center;
         justify-content: center;
-
+        font-size: 10px;
 
      
     }

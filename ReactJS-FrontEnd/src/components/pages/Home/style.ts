@@ -26,6 +26,9 @@ export const StyleHome = styled.div`
                 width: 26rem;
                 height: 3rem;
                 border: solid 1px var(--blue);
+                background-color: var(--purple);
+                color: var(--white);
+                font-weight: bold;
             }
             
 
@@ -44,7 +47,7 @@ export const StyleHome = styled.div`
     }
 
     .header-default-page{
-        width: 90rem;
+        width: 100%;
         max-width: 100%;
         height: 5rem;
         display: flex;
@@ -65,13 +68,15 @@ export const StyleHome = styled.div`
             button{
                 width: 9rem;
                 height: 3rem;
-                border: solid 1px var(--blue);
+                border: none;
                 border-radius: 4px;
                 font-size: 1.2rem;
-                :visited{
-                    color: var(--blue);
-                }
 
+                :visited{
+                    color: var(--white);
+                }
+                background-color: var(--purple);
+                font-weight: bold;
             }
     }
 

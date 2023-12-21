@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyleRegisteredUserlist = styled.ul`
-    border: solid ;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
