@@ -18,7 +18,7 @@ margin: 10px 0;
 .left-data{
     width: 11rem;
     max-width: 100%;
-    border: solid 1px var(--blue);
+    border: solid 1px var(--purple);
     border-radius: 8px;
     padding: 5px;
 }
@@ -26,7 +26,7 @@ margin: 10px 0;
 .right-data{
     width: 100px;
     height: 100px;
-    border: solid 1px var(--blue);
+    border: solid 1px var(--purple);
     border-radius: 8px;
     padding: 5px;
     display: flex;
