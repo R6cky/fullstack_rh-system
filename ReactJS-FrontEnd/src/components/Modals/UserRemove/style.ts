@@ -14,16 +14,14 @@ export const StyleUserRemove = styled.div`
 
 
     .close-modal{
-        border: solid;
         width: 100%;
         height: 40px;
         display: flex;
         justify-content: flex-end;
-        
 
         span{
             border-radius: 50%;
-            border: solid ;
+            border: solid var(--purple) 1px;
             width: 40px;
             height: 40px;
             display: flex;
@@ -31,6 +29,14 @@ export const StyleUserRemove = styled.div`
             align-items: center;
             background: white;
             cursor: pointer;
+            color: var(--purple);
+            margin: 5px;
+
+            
+        }
+        span:hover{
+                background-color: var(--purple);
+                color: var(--white);
         }
     }
 

@@ -13,7 +13,6 @@ export const StyleDepartmentView = styled.div`
     background: rgba(0, 0, 0, 0.8);
 
     .close-modal{
-        border: solid;
         width: 100%;
         height: 40px;
         display: flex;
