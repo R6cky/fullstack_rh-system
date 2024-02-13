@@ -58,6 +58,18 @@ export const StyleUserEdit = styled.div`
             justify-content: center;
             align-items: center;
             gap: 20px;
+            width: 25rem;
+            height: 15rem;
+
+            .input-area{
+                width: 18.75rem;
+                max-width: 100%;
+                height: 9rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+            }
             
 
             input{
@@ -67,6 +79,15 @@ export const StyleUserEdit = styled.div`
                 border: solid var(--purple) 1px;
                 border-radius: 4px;
                 font-size: 16px;
+            }
+
+
+            .message-required{
+                display: block;
+                width: 100%;
+                height: 1rem;
+                color: red;
+                font-size: 0.8rem;
             }
 
 

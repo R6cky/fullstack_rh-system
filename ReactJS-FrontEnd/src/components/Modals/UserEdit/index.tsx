@@ -1,6 +1,27 @@
 import { useContext, useState } from "react";
 import { StyleUserEdit } from "./style";
 import { ModalContext } from "../../../context/ContextModals";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+
+type tUserEdit = {
+  name: string;
+  email: string;
+};
+
+const schema = yup
+  .object({
+    name: yup
+      .string()
+      .required("Campo obrigatório")
+      .min(5, "Deve conter no mínimo 5 caracteres"),
+    email: yup
+      .string()
+      .required("Campo obrigatório")
+      .email("Digite um email válido"),
+  })
+  .required();
 
 export const UserEdit = () => {
   const {
@@ -11,10 +32,15 @@ export const UserEdit = () => {
     dataRequest,
   } = useContext(ModalContext);
 
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const submit = (data: tUserEdit) => {
+    userEdit(data);
+  };
 
   return (
     <StyleUserEdit>
@@ -30,33 +56,22 @@ export const UserEdit = () => {
           </span>
         </div>
         <h2 className="title-department-create">Editar Usuário</h2>
-        <form
-          className="form-user-edit"
-          action=""
-          onSubmit={(e) => userEdit(e, data, dataRequest.id)}
-        >
-          <input
-            type="text"
-            placeholder="nome do usuário (dado anterior)"
-            onChange={(e) =>
-              setData({
-                name: e.target.value,
-                email: data.email,
-              })
-            }
-          />
-          <input
-            type="email"
-            placeholder="email (dado anterior)"
-            id=""
-            onChange={(e) =>
-              setData({
-                name: data.name,
-                email: e.target.value,
-              })
-            }
-          />
-
+        <form className="form-user-edit" onSubmit={handleSubmit(submit)}>
+          <div className="input-area">
+            <input
+              type="text"
+              placeholder="nome do usuário (dado anterior)"
+              {...register("name")}
+            />
+            <span className="message-required">{errors.name?.message}</span>
+            <input
+              type="email"
+              placeholder="email (dado anterior)"
+              id=""
+              {...register("email")}
+            />
+            <span className="message-required">{errors.email?.message}</span>
+          </div>
           <button className="btn-user-edit">Salvar</button>
         </form>
       </div>

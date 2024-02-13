@@ -23,12 +23,7 @@ export const DepartmentEdit = ({}: any) => {
     setModalDepartmentEdit,
     modalDepartmentEdit,
     departmentEdit,
-    dataRequest,
   } = useContext(ModalContext);
-
-  const [data, setData] = useState({
-    description: "",
-  });
 
   const {
     register,
