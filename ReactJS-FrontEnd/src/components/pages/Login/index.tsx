@@ -25,7 +25,7 @@ const schema = yup
     password: yup
       .string()
       .required("Campo obrigatório")
-      .min(4, "Deve conter no mínimo 8 caracteres"),
+      .min(4, "Deve conter no mínimo 4 caracteres"),
   })
   .required();
 
@@ -52,7 +52,6 @@ export const Login = () => {
 
   const submit = (data: tLogin) => {
     userLogin(data);
-    console.log(data);
   };
 
   return (

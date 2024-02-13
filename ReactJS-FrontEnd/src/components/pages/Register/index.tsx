@@ -40,6 +40,11 @@ export const Register = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const submit = (data: tRegister) => {
+    data = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    };
     userRegister(data);
     console.log(data);
   };

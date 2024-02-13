@@ -57,8 +57,7 @@ export const UserProvider = ({ children }: any) => {
     }
   }
 
-  async function userRegister(e: any, data: any) {
-    e.preventDefault();
+  async function userRegister(data: any) {
     console.log(data);
     try {
       const request = (await api.post(`/employees/create`, data)).data;

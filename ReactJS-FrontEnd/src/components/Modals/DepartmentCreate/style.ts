@@ -51,6 +51,7 @@ export const StyleDepartmentCreate = styled.div`
         align-items: center;
         background-color: var(--white);
         border-radius: 8px;
+       
 
 
         .title-department-create{
@@ -58,13 +59,37 @@ export const StyleDepartmentCreate = styled.div`
         }
 
         form{
-            
+
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 10px;
+            width:100%;
+            max-width: 100%;
+            height:24rem;
             
+
+            .input-area{
+                width: 300px;
+                max-width: 100%;
+                height: 8rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .message-required{
+                display: block;
+                width: 100%;
+                height: 1rem;
+                color: red;
+                font-size: 0.8rem;
+            }
+
+
+
 
             input{
                 width: 300px;

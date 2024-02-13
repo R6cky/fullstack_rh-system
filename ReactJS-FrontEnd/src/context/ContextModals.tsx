@@ -38,8 +38,7 @@ export const ModalProvider = ({ children }: any) => {
     }
   }
 
-  async function departmentCreate(e: any, data: any) {
-    e.preventDefault();
+  async function departmentCreate(data: any) {
     const token = localStorage.getItem("token");
     try {
       const request = (
