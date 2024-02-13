@@ -68,9 +68,7 @@ export const UserProvider = ({ children }: any) => {
     }
   }
 
-  async function userLogin(e: any, data: any) {
-    e.preventDefault();
-
+  async function userLogin(data: any) {
     try {
       const request = (await api.post(`/auth/login`, data)).data;
       localStorage.setItem("token", request.authToken);

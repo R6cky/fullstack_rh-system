@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyleNotEmployeeCard = styled.li`
-    border: solid red;
+    border: solid var(--purple) 1px;
     width: 250px;
     max-width: 100%;
     height: 100px;

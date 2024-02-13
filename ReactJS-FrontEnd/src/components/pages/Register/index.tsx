@@ -3,6 +3,7 @@ import { StyleRegister } from "./style";
 import { Footer } from "../../Footer";
 import { useContext, useState } from "react";
 import { UserContext } from "../../../context/ContextUsers";
+import { ErrorMessage } from "@hookform/error-message";
 
 export const Register = () => {
   const { userRegister } = useContext(UserContext);
@@ -48,8 +49,9 @@ export const Register = () => {
                   })
                 }
               />
+
               <input
-                type="text"
+                type="email"
                 placeholder="Seu e-mail"
                 onChange={(e) =>
                   setuserData({

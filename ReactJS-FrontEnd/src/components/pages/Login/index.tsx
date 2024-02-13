@@ -4,13 +4,35 @@ import { Footer } from "../../Footer";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../context/ContextUsers";
 import { AuthContext } from "../../../context/ContextAuth";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+// Type Script
+
+type Inputs = {
+  email: string;
+  password: string;
+};
+
+const schema = yup
+  .object({
+    email: yup
+      .string()
+      .required("Campo obrigatório")
+      .min(5, "Deve conter no mínimo 5 caracteres")
+      .email("Digite um e-mail válido"),
+    password: yup
+      .string()
+      .required("Campo obrigatório")
+      .min(8, "Deve conter no mínimo 8 caracteres"),
+  })
+  .required();
 
 export const Login = () => {
   const { userLogin } = useContext(UserContext);
   const { userIsAuthenticated, isAdmin } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const [userData, setUserData] = useState({ email: "", password: "" });
 
   useEffect(() => {
     if (userIsAuthenticated() && isAdmin() === "true") {
@@ -21,6 +43,17 @@ export const Login = () => {
       navigate("/homeUser");
     }
   }, []);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const onSubmit = (data: Inputs) => {
+    userLogin(data);
+    console.log(data);
+  };
 
   return (
     <StyleLogin>
@@ -45,28 +78,29 @@ export const Login = () => {
           Preencha os campos para realizar o login
         </p>
         <div className="input-area">
-          <form action="" onSubmit={(e) => userLogin(e, userData)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="input-area-input">
-              <input
-                type="text"
-                placeholder="Seu e-mail"
-                onChange={(e) =>
-                  setUserData({
-                    email: e.target.value,
-                    password: userData.password,
-                  })
-                }
-              />
-              <input
-                type="password"
-                placeholder="Sua senha"
-                onChange={(e) =>
-                  setUserData({
-                    email: userData.email,
-                    password: e.target.value,
-                  })
-                }
-              />
+              <div className="input-email-area">
+                <input
+                  type="text"
+                  placeholder="Seu e-mail"
+                  {...register("email")}
+                />
+                <span className="message-required">
+                  {errors.email?.message}
+                </span>
+              </div>
+
+              <div className="input-password-area">
+                <input
+                  placeholder="senha"
+                  type="password"
+                  {...register("password")}
+                />
+                <span className="message-required">
+                  {errors.password?.message}
+                </span>
+              </div>
             </div>
 
             <div className="input-area-button">

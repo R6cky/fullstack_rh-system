@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const StyleNotEmployeeList = styled.ul`
-
-    border: solid red;
+    border: solid var(--purple) 1px;
     width: 700px;
     max-width: 100%;
     height: 300px;

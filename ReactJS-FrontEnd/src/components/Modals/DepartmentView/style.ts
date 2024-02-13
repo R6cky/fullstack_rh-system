@@ -10,6 +10,7 @@ export const StyleDepartmentView = styled.div`
     height: 100vh;
     position: absolute;
     top: 0px;
+    left: 0;
     background: rgba(0, 0, 0, 0.8);
 
     .close-modal{
@@ -20,7 +21,7 @@ export const StyleDepartmentView = styled.div`
 
         span{
             border-radius: 50%;
-            border: solid ;
+            border: solid var(--purple) 1px;
             width: 40px;
             height: 40px;
             display: flex;
@@ -28,32 +29,47 @@ export const StyleDepartmentView = styled.div`
             align-items: center;
             background: white;
             cursor: pointer;
+            color: var(--purple);
+            margin: 5px;
+
+            
+        }
+        span:hover{
+                background-color: var(--purple);
+                color: var(--white);
         }
     }
 
 
     .data-modal-view{
-        border: solid red;
         width: 700px;
         max-width: 100%;
         height: 200px;
         background-color: white;
-      
-
+        border-radius:8px;
+        
     }
 
     .header-modal{
-        border: solid red;
         width: 100%;
         height: 120px;
         display: flex;
         flex-direction: column;
         justify-content:space-around ;
+        color: var(--purple);
 
+        .department-name{
+            margin-left: 5px;
+        }
+        .department-description{
+            margin-left: 5px
+        }
+        .department-owner{
+            margin-left:5px;
+        }
     }
 
     .select-area{
-        border: solid red;
         width: 100%;
         max-width: 100%;
         height: 35px;

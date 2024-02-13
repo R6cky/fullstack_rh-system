@@ -72,7 +72,6 @@ export const DepartmentView = () => {
           </button>
         </div>
       </div>
-
       <NotEmployeeList />
     </StyleDepartmentView>
   );

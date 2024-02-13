@@ -10,7 +10,6 @@ export const NotEmployeeCard = ({ userData }: any) => {
   return (
     <StyleNotEmployeeCard>
       <div className="user-data">
-        {userData.id}
         <h3 className="user-name">{userData.name}</h3>
         {companies.map((company: any) =>
           company.id === userData.company_id ? (

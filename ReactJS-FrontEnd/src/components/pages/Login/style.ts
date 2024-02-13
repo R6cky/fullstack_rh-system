@@ -50,7 +50,7 @@ export const StyleLogin = styled.div`
     .login-container{
         width: 500px;
         max-width: 100%;
-        height: 400px;
+        height: 460px;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
@@ -68,15 +68,36 @@ export const StyleLogin = styled.div`
             justify-content: center;
             
 
+            
+
             .input-area-input{
-                
+
                 width: 20rem;
                 max-width: 100%;
-                height: 6rem;
+                height: 10rem;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: space-between;
                 align-items: center;
+
+                .input-email-area{
+           
+                    width: 100%;
+                    height: 4rem;
+            }
+
+
+                .input-password-area{
+                    width: 100%;
+                    height: 4rem;
+                }
+
+                .message-required{
+                    color: red;
+                    font-size: 0.8rem;
+                }
+
+            }
 
                 input{
                     width: 90%;
@@ -163,15 +184,6 @@ export const StyleLogin = styled.div`
                     transform: translateY(-100px);
         }
         }
-
-        
-    }
-
-
-    
-
-
-
 
 
 `
