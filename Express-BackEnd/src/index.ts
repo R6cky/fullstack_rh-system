@@ -6,6 +6,7 @@ import { routes } from './routes'
 import AppError from './errors/appError'
 import { PrismaClient } from '@prisma/client'
 
+
 export const prisma = new PrismaClient()
 
 export const app = express()
