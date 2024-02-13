@@ -10,7 +10,7 @@ import * as yup from "yup";
 
 // Type Script
 
-type Inputs = {
+type tLogin = {
   email: string;
   password: string;
 };
@@ -25,7 +25,7 @@ const schema = yup
     password: yup
       .string()
       .required("Campo obrigatório")
-      .min(8, "Deve conter no mínimo 8 caracteres"),
+      .min(4, "Deve conter no mínimo 8 caracteres"),
   })
   .required();
 
@@ -50,7 +50,7 @@ export const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data: Inputs) => {
+  const submit = (data: tLogin) => {
     userLogin(data);
     console.log(data);
   };
@@ -78,7 +78,7 @@ export const Login = () => {
           Preencha os campos para realizar o login
         </p>
         <div className="input-area">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(submit)}>
             <div className="input-area-input">
               <div className="input-email-area">
                 <input

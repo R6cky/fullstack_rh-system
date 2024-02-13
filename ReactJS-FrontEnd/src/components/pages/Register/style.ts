@@ -54,7 +54,7 @@ export const StyleRegister = styled.div`
         .register-container{
             width: 500px;
             max-width: 100%;
-            height: 400px;
+            height: 28.75rem;
             border-radius: 10px;
             display: flex;
             flex-direction: column;
@@ -64,23 +64,32 @@ export const StyleRegister = styled.div`
             box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 
             form{
+       
                 width:100%;
                 max-width: 100%;
-                height:18rem;
+                height:20rem;
                 display: flex ;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: space-between;
                 
 
 
                 .input-area-input{
                 width: 20rem;
                 max-width: 100%;
-                height: 9rem;
+                height: 12rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
                 align-items: center;
+
+                .message-required{
+                    display: block;
+                    width: 90%;
+                    height: 1.5rem;
+                    color: red;
+                    font-size: 0.8rem;
+                }
                 
 
                 input{
@@ -96,14 +105,14 @@ export const StyleRegister = styled.div`
             .input-area-button{
                width: 20rem;
                max-width: 100%;
-               height: 7rem;
+               height: 6rem;
                display: flex;
                flex-direction: column;
                gap: 10px;
                align-items: center;
+               justify-content: space-between;
 
                span{
-                  
                    width: 40px;
                    height: 20px;
                    display: flex;

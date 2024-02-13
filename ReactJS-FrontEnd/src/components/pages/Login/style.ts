@@ -50,7 +50,7 @@ export const StyleLogin = styled.div`
     .login-container{
         width: 500px;
         max-width: 100%;
-        height: 460px;
+        height: 25rem;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
@@ -66,33 +66,38 @@ export const StyleLogin = styled.div`
             display: flex ;
             flex-direction: column;
             justify-content: center;
-            
-
+            align-items: center;
             
 
             .input-area-input{
-
                 width: 20rem;
                 max-width: 100%;
-                height: 10rem;
+                height: 8rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: center;
 
                 .input-email-area{
-           
                     width: 100%;
                     height: 4rem;
-            }
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
 
-
-                .input-password-area{
+                .input-password-area{  
                     width: 100%;
                     height: 4rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                 }
 
                 .message-required{
+                    display: block;
+                    width: 90%;
+                    height: 1rem;
                     color: red;
                     font-size: 0.8rem;
                 }
@@ -108,7 +113,6 @@ export const StyleLogin = styled.div`
 
 
             .input-area-button{
-               
                 width: 20rem;
                 max-width: 100%;
                 height: 7rem;
@@ -118,7 +122,6 @@ export const StyleLogin = styled.div`
                 align-items: center;
 
                 span{
-                   
                     width: 40px;
                     height: 20px;
                     display: flex;

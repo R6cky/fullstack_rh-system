@@ -3,16 +3,46 @@ import { StyleRegister } from "./style";
 import { Footer } from "../../Footer";
 import { useContext, useState } from "react";
 import { UserContext } from "../../../context/ContextUsers";
-import { ErrorMessage } from "@hookform/error-message";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+type tRegister = {
+  name: string;
+  email: string;
+  password: string;
+};
+const schema = yup
+  .object({
+    name: yup
+      .string()
+      .required("Campo obrigatório")
+      .min(5, "Deve conter no mínimo 5 caracteres"),
+    email: yup
+      .string()
+      .required("Campo obrigatório")
+      .min(5, "Deve conter no mínimo 5 caracteres")
+      .email("Digite um e-mail válido"),
+    password: yup
+      .string()
+      .required("Campo obrigatório")
+      .min(4, "Deve conter no mínimo 8 caracteres"),
+  })
+  .required();
 
 export const Register = () => {
   const { userRegister } = useContext(UserContext);
 
-  const [userData, setuserData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  } as any);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const submit = (data: tRegister) => {
+    userRegister(data);
+    console.log(data);
+  };
 
   return (
     <StyleRegister>
@@ -36,42 +66,24 @@ export const Register = () => {
         <h3 className="title-register">Cadastre-se</h3>
 
         <div className="input-area">
-          <form action="" onSubmit={(e) => userRegister(e, userData)}>
+          <form onSubmit={handleSubmit(submit)}>
             <div className="input-area-input">
+              <input type="text" placeholder="Seu nome" {...register("name")} />
+              <span className="message-required">{errors.name?.message}</span>
               <input
                 type="text"
-                placeholder="Seu nome"
-                onChange={(e) =>
-                  setuserData({
-                    name: e.target.value,
-                    email: userData.email,
-                    password: userData.passsword,
-                  })
-                }
-              />
-
-              <input
-                type="email"
                 placeholder="Seu e-mail"
-                onChange={(e) =>
-                  setuserData({
-                    name: userData.name,
-                    email: e.target.value,
-                    password: userData.passsword,
-                  })
-                }
+                {...register("email")}
               />
+              <span className="message-required">{errors.email?.message}</span>
               <input
                 type="password"
                 placeholder="Sua senha"
-                onChange={(e) =>
-                  setuserData({
-                    name: userData.name,
-                    email: userData.email,
-                    password: e.target.value,
-                  })
-                }
+                {...register("password")}
               />
+              <span className="message-required">
+                {errors.password?.message}
+              </span>
             </div>
             <hr />
             <div className="input-area-button">
