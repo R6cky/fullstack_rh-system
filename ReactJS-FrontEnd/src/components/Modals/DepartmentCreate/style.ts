@@ -80,6 +80,8 @@ export const StyleDepartmentCreate = styled.div`
                 align-items: center;
             }
 
+          
+
             .message-required{
                 display: block;
                 width: 100%;

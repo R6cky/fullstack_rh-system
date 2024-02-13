@@ -63,6 +63,14 @@ export const StyleDepartmentEdit = styled.div`
             align-items: center;
             width: 100%;
             height: 150px;
+
+
+            .input-area{
+                height: 4rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
  
             input{
                 width: 250px;
@@ -76,6 +84,15 @@ export const StyleDepartmentEdit = styled.div`
                 width: 250px;
                 max-width: 100%;
                 height: 35px;
+            }
+
+
+            .message-required{
+                display: block;
+                width: 100%;
+                height: 1rem;
+                color: red;
+                font-size: 0.8rem;
             }
         }
 
