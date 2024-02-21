@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { StyleDepartmentRemove } from "./style";
 import { ModalContext } from "../../../context/ContextModals";
 
-export const DepartmentRemove = () => {
+export const DepartmentRemove = (): JSX.Element => {
   const {
     modalDepartmentRemove,
     setModalDepartmentRemove,

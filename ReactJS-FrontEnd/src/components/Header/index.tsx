@@ -1,6 +1,6 @@
 import { StyleHeader } from "./style";
 
-export const Header = () => {
+export const Header = (): JSX.Element => {
   return (
     <StyleHeader>
       {/* <div className="company-name">RH system</div>

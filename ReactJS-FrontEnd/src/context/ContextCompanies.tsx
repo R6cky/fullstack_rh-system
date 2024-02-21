@@ -1,26 +1,34 @@
 import { createContext, useState } from "react";
 import { api } from "../services/api";
+import {
+  iCategories,
+  iCompanies,
+  iDepartments,
+} from "../interfaces/interfacesContextCompanies";
 
-export const CompanyContext = createContext({} as any);
+export const CompanyContext = createContext({});
 
 export const CompanyProvider = ({ children }: any) => {
-  const [companies, setCompanies] = useState([] as any);
-  const [departmentsByCompany, setDepartmentsByCompany] = useState([]);
-  const [sectors, setSectors] = useState([] as any);
+  const [companies, setCompanies] = useState([] as iCompanies[]);
+  const [departmentsByCompany, setDepartmentsByCompany] = useState(
+    [] as Array<iDepartments>
+  );
+  const [sectors, setSectors] = useState([] as iCategories[]);
   const [dataCompanyById, setDataCompanyById] = useState({} as any);
   const [dataDepartmentById, setDataDepartmentById] = useState({} as any);
 
-  const getCompanies = async () => {
+  const getCompanies = async (): Promise<void> => {
     try {
       const request = await api.get("/companies/readAll");
-      setCompanies(request.data);
+      const reqJson: Array<iCompanies> = request.data;
+      setCompanies(reqJson);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getDepartmentByCompany = async (companyId: any) => {
-    const token = localStorage.getItem("token");
+  const getDepartmentByCompany = async (companyId: string) => {
+    const token: string | null = localStorage.getItem("token");
 
     if (companyId === "Selecionar empresa") {
       return;
@@ -30,46 +38,47 @@ export const CompanyProvider = ({ children }: any) => {
       const request = await api.get(`/departments/readByCompany/${companyId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setDepartmentsByCompany(request.data);
-      return request.data;
+      const reqJson: Array<iDepartments> = request.data;
+      setDepartmentsByCompany(reqJson);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getSectors = async () => {
+  const getSectors = async (): Promise<void> => {
     try {
-      const request = await api.get("categories/readAll");
-      setSectors(request.data);
+      const request: any = await api.get("categories/readAll");
+      const reqJson: Array<iCategories> = request.data;
+      setSectors(reqJson);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getCompanyById = async (id: any) => {
-    const token = localStorage.getItem("token");
+  // const getCompanyById = async (id: string) => {
+  //   const token: string | null = localStorage.getItem("token");
 
-    try {
-      const request = await api.get(`/companies/readById/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setDataCompanyById(request.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //   try {
+  //     const request: iCompanies = await api.get(`/companies/readById/${id}`, {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     });
+  //     setDataCompanyById(request);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const getDepartmentById = async (id: any) => {
-    const token = localStorage.getItem("token");
-    try {
-      const request = await api.get(`/departments/readById/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setDataDepartmentById(request.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getDepartmentById = async (id: string): Promise<void> => {
+  //   const token: string | null = localStorage.getItem("token");
+  //   try {
+  //     const request = await api.get(`/departments/readById/${id}`, {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     });
+  //     setDataDepartmentById(request.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <CompanyContext.Provider
@@ -78,8 +87,8 @@ export const CompanyProvider = ({ children }: any) => {
         getCompanies,
         getDepartmentByCompany,
         getSectors,
-        getCompanyById,
-        getDepartmentById,
+        //getCompanyById,
+        //getDepartmentById,
         setDepartmentsByCompany,
         dataDepartmentById,
         dataCompanyById,

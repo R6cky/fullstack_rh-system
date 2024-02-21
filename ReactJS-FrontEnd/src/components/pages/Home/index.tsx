@@ -5,10 +5,12 @@ import { Footer } from "../../Footer";
 import { useContext, useEffect, useState } from "react";
 import { CompanyContext } from "../../../context/ContextCompanies";
 import ImgHome from "../../../assets/main-home.jpg";
-export const Home = () => {
-  const { sectors, getSectors } = useContext(CompanyContext);
+import { iCategories } from "../../../interfaces/interfacesContextCompanies";
 
-  const [dataSector, setDataSector] = useState({} as any);
+export const Home = (): JSX.Element => {
+  const { sectors, getSectors }: any = useContext(CompanyContext);
+
+  const [dataSector, setDataSector] = useState("" as string);
 
   useEffect(() => {
     getSectors();
@@ -38,7 +40,7 @@ export const Home = () => {
         <div className="container-data-right">
           <select name="" id="" onChange={(e) => setDataSector(e.target.value)}>
             <option value="Selecione o setor">Selecione o setor</option>;
-            {sectors.map((sector: any) => {
+            {sectors.map((sector: iCategories) => {
               return (
                 <option value={sector.id} key={sector.id}>
                   {sector.name}

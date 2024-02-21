@@ -5,7 +5,7 @@ import { Register } from "../components/pages/Register";
 import { MainPageAdmin } from "../components/pages/MainPageAdmin";
 import { MainPageUser } from "../components/pages/MainPageUser";
 
-export const RoutesMain: any = () => {
+export const RoutesMain: any = (): any => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />

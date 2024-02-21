@@ -6,17 +6,17 @@ export const AuthContext = createContext({} as any);
 export const AuthProvider = ({ children }: any) => {
   const navigate = useNavigate();
 
-  const userIsAuthenticated = () => {
-    const userRToken = localStorage.getItem("token");
+  const userIsAuthenticated = (): string | null => {
+    const userRToken: string | null = localStorage.getItem("token");
     return userRToken;
   };
 
-  const isAdmin = () => {
-    const typeUser = localStorage.getItem("isAdmin");
+  const isAdmin = (): string | null => {
+    const typeUser: string | null = localStorage.getItem("isAdmin");
     return typeUser;
   };
 
-  const logout = () => {
+  const logout = (): void => {
     localStorage.clear();
     navigate("/login");
   };

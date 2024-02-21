@@ -26,13 +26,14 @@ const schema = yup
   })
   .required();
 
-export const DepartmentCreate = () => {
+export const DepartmentCreate = (): JSX.Element => {
   const {
     activateModal,
     setModalDepartmentCreate,
     modalDepartmentCreate,
     departmentCreate,
   } = useContext(ModalContext);
+
   const { companies } = useContext(CompanyContext);
 
   const {
@@ -41,7 +42,7 @@ export const DepartmentCreate = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const submit = (data: tDepartmentCreate) => {
+  const submit = (data: tDepartmentCreate): void => {
     departmentCreate(data);
   };
 

@@ -17,7 +17,7 @@ const schema = yup
       .min(10, "Deve conter no mínimo 10 caracteres"),
   })
   .required();
-export const DepartmentEdit = ({}: any) => {
+export const DepartmentEdit = (): JSX.Element => {
   const {
     activateModal,
     setModalDepartmentEdit,
@@ -31,7 +31,7 @@ export const DepartmentEdit = ({}: any) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const submit = (data: tDepartmentEdit) => {
+  const submit = (data: tDepartmentEdit): void => {
     departmentEdit(data);
   };
 
