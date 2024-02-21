@@ -14,8 +14,8 @@ export const CompanyProvider = ({ children }: any) => {
     [] as Array<iDepartments>
   );
   const [sectors, setSectors] = useState([] as iCategories[]);
-  const [dataCompanyById, setDataCompanyById] = useState({} as any);
-  const [dataDepartmentById, setDataDepartmentById] = useState({} as any);
+  // const [dataCompanyById, setDataCompanyById] = useState({} as any);
+  // const [dataDepartmentById, setDataDepartmentById] = useState({} as any);
 
   const getCompanies = async (): Promise<void> => {
     try {
