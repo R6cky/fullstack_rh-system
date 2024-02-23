@@ -56,30 +56,30 @@ export const CompanyProvider = ({ children }: any) => {
     }
   };
 
-  // const getCompanyById = async (id: string) => {
-  //   const token: string | null = localStorage.getItem("token");
+  const getCompanyById = async (id: string): Promise<void> => {
+    const token: string | null = localStorage.getItem("token");
 
-  //   try {
-  //     const request: iCompanies = await api.get(`/companies/readById/${id}`, {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     });
-  //     setDataCompanyById(request);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+    try {
+      const request: any = await api.get(`/companies/readById/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setDataCompanyById(request.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // const getDepartmentById = async (id: string): Promise<void> => {
-  //   const token: string | null = localStorage.getItem("token");
-  //   try {
-  //     const request = await api.get(`/departments/readById/${id}`, {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     });
-  //     setDataDepartmentById(request.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const getDepartmentById = async (id: string): Promise<void> => {
+    const token: string | null = localStorage.getItem("token");
+    try {
+      const request = await api.get(`/departments/readById/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setDataDepartmentById(request.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <CompanyContext.Provider
@@ -88,8 +88,8 @@ export const CompanyProvider = ({ children }: any) => {
         getCompanies,
         getDepartmentByCompany,
         getSectors,
-        // getCompanyById,
-        // getDepartmentById,
+        getCompanyById,
+        getDepartmentById,
         setDepartmentsByCompany,
         dataDepartmentById,
         dataCompanyById,

@@ -3,7 +3,15 @@ import { api } from "../services/api";
 import { CompanyContext } from "./ContextCompanies";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./ContextAuth";
-import { iEmployeesUsers } from "../interfaces/interfacesUsers";
+import {
+  iDataUserDefault,
+  iDataUserLogin,
+  iEmployeesUsers,
+  iNotEmployees,
+  iRegisterUserData,
+  iReturnDataUserLogin,
+  iReturnRegisteredUserData,
+} from "../interfaces/interfacesUsers";
 
 export const UserContext = createContext({} as any);
 
@@ -33,49 +41,54 @@ export const UserProvider = ({ children }: any): JSX.Element => {
     }
   };
 
-  async function getUserOutOfWork() {
+  async function getUserOutOfWork(): Promise<void> {
     const token: string | null = localStorage.getItem("token");
 
     try {
       const request = await api.get("/employees/outOfWork", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setUsersOutOfWork(request.data);
+      const reqJson: Array<iNotEmployees> = request.data;
+      setUsersOutOfWork(reqJson);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function getDataOfUserLogged() {
-    const token = localStorage.getItem("token");
+  async function getDataOfUserLogged(): Promise<void> {
+    const token: string | null = localStorage.getItem("token");
 
     try {
-      const request = await api.get("/employees/profile", {
+      const request: any = await api.get("/employees/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setDataOfUserLogged(request.data);
-      getCompanyById(request.data.company_id);
-      getDepartmentById(request.data.department_id);
+      const reqJson: iDataUserDefault = request.data;
+      setDataOfUserLogged(reqJson);
+      getCompanyById(reqJson.company_id);
+      getDepartmentById(reqJson.department_id);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function userRegister(data: any) {
-    console.log(data);
+  async function userRegister(data: iRegisterUserData) {
     try {
-      const request = (await api.post(`/employees/create`, data)).data;
+      const request: iReturnRegisteredUserData = (
+        await api.post(`/employees/create`, data)
+      ).data;
       navigate("/login");
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function userLogin(data: any) {
+  async function userLogin(data: iDataUserLogin) {
     try {
-      const request = (await api.post(`/auth/login`, data)).data;
+      const request: iReturnDataUserLogin = (
+        await api.post(`/auth/login`, data)
+      ).data;
       localStorage.setItem("token", request.authToken);
-      localStorage.setItem("isAdmin", request.isAdm);
+      localStorage.setItem("isAdmin", JSON.stringify(request.isAdm));
       if (userIsAuthenticated() && isAdmin() === "false") {
         navigate("/homeUser");
       }

@@ -1,5 +1,4 @@
 export interface iCompanies {
-    key: string
     id: string
     name: string
     description: string

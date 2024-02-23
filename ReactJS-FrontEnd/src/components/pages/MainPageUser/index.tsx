@@ -60,7 +60,7 @@ export const MainPageUser = () => {
         <div className="data-employees">
           <div className="data-employees-header">
             <h4 className="company-name">
-              <span className="data-company">{dataCompanyById.name}</span> -
+              <span className="data-company">{dataCompanyById.name}</span> *|*
               <span className="data-department">{dataDepartmentById.name}</span>
             </h4>
           </div>

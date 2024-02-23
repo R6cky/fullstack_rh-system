@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import { StyleRegister } from "./style";
 import { Footer } from "../../Footer";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../../context/ContextUsers";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-type tRegister = {
+export interface iRegister {
   name: string;
   email: string;
   password: string;
-};
+}
 const schema = yup
   .object({
     name: yup
@@ -39,14 +39,13 @@ export const Register = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const submit = (data: tRegister) => {
+  const submit = (data: iRegister) => {
     data = {
       name: data.name,
       email: data.email,
       password: data.password,
     };
     userRegister(data);
-    console.log(data);
   };
 
   return (
