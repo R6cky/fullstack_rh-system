@@ -96,8 +96,7 @@ export const ModalProvider = ({ children }: any) => {
     }
   }
 
-  async function userEdit(e: any, data: any, id: any) {
-    e.preventDefault();
+  async function userEdit(id: any, data: any) {
     const token = localStorage.getItem("token");
     try {
       await api.patch(`/employees/updateEmployee/${id}`, data, {

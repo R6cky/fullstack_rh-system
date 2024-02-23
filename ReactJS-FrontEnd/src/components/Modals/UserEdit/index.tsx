@@ -39,7 +39,7 @@ export const UserEdit = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const submit = (data: tUserEdit) => {
-    userEdit(data);
+    userEdit(dataRequest.id, data);
   };
 
   return (
