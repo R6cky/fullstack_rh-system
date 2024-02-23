@@ -4,3 +4,11 @@ export interface iLogin {
   };
 
 
+export interface iEmployeesUsers {
+    company_id: string
+    department_id: string
+    email: string
+    id: string
+    is_admin: boolean
+    name: string
+}

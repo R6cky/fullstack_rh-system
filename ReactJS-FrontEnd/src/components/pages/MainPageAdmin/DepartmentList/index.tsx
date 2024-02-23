@@ -14,6 +14,7 @@ export const DepartmentList = () => {
 
   return (
     <StyleDepartmentList>
+      {console.log("DEPARTMENT LIST CONSOLE", departmentsByCompany)}
       {departmentsByCompany.map((department: any) => {
         return <DepartmentCard key={department.id} department={department} />;
       })}

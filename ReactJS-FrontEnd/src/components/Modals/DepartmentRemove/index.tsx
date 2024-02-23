@@ -32,7 +32,7 @@ export const DepartmentRemove = (): JSX.Element => {
         </h3>
         <button
           className="btn-remove"
-          onClick={(e) => departmentRemove(e, dataRequest)}
+          onClick={() => departmentRemove(dataRequest)}
         >
           Remover
         </button>

@@ -56,8 +56,7 @@ export const ModalProvider = ({ children }: any) => {
     }
   }
 
-  async function departmentEdit(e: any, id: any, data: any) {
-    e.preventDefault();
+  async function departmentEdit(id: any, data: any) {
     const token = localStorage.getItem("token");
     try {
       const request = (
@@ -78,8 +77,7 @@ export const ModalProvider = ({ children }: any) => {
     }
   }
 
-  async function departmentRemove(e: any, departmentData: any) {
-    e.preventDefault();
+  async function departmentRemove(departmentData: any) {
     const token = localStorage.getItem("token");
     console.log(departmentData);
     try {

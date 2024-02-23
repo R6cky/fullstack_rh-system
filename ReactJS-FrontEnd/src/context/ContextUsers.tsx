@@ -3,11 +3,14 @@ import { api } from "../services/api";
 import { CompanyContext } from "./ContextCompanies";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./ContextAuth";
+import { iEmployeesUsers } from "../interfaces/interfacesUsers";
 
 export const UserContext = createContext({} as any);
 
 export const UserProvider = ({ children }: any): JSX.Element => {
-  const [registeredUsers, setRegisteredUsers] = useState([] as any);
+  const [registeredUsers, setRegisteredUsers] = useState(
+    [] as Array<iEmployeesUsers>
+  );
   const [usersOutOfWork, setUsersOutOfWork] = useState([] as any);
   const [dataOfUserLogged, setDataOfUserLogged] = useState({} as any);
 
@@ -23,14 +26,15 @@ export const UserProvider = ({ children }: any): JSX.Element => {
       const request = await api.get("/employees/readAll", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setRegisteredUsers(request.data);
+      const reqJson: Array<iEmployeesUsers> = request.data;
+      setRegisteredUsers(reqJson);
     } catch (error) {
       console.log(error);
     }
   };
 
   async function getUserOutOfWork() {
-    const token = localStorage.getItem("token");
+    const token: string | null = localStorage.getItem("token");
 
     try {
       const request = await api.get("/employees/outOfWork", {
