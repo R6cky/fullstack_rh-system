@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ModalContext } from "../../../context/ContextModals";
 import { StyleDepartmentEdit } from "./style";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 
-type tDepartmentEdit = {
+interface iDepartmentEdit {
+  id: string;
   description: string;
-};
+}
 
 const schema = yup
   .object({
@@ -23,6 +24,7 @@ export const DepartmentEdit = (): JSX.Element => {
     setModalDepartmentEdit,
     modalDepartmentEdit,
     departmentEdit,
+    dataRequest,
   } = useContext(ModalContext);
 
   const {
@@ -31,8 +33,9 @@ export const DepartmentEdit = (): JSX.Element => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const submit = (data: tDepartmentEdit): void => {
-    departmentEdit(data);
+  const submit = (data: iDepartmentEdit): void => {
+    const id: string = dataRequest.id;
+    departmentEdit(id, data);
   };
 
   return (

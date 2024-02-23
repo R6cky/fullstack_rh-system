@@ -50,7 +50,6 @@ export const ModalProvider = ({ children }: any) => {
       ).data;
       setDepartmentsByCompany([...departmentsByCompany, request]);
       activateModal(modalDepartmentCreate, setModalDepartmentCreate);
-      console.log(request);
     } catch (error) {
       console.log(error);
     }
@@ -66,10 +65,11 @@ export const ModalProvider = ({ children }: any) => {
           },
         })
       ).data;
-
+      setDataRequest(request.id);
       const departmentsByCompanyUpdated = await getDepartmentByCompany(
         request.department.company_id
       );
+      console.log("DEPARTMENT EDIT", request);
       setDepartmentsByCompany(departmentsByCompanyUpdated);
       activateModal(modalDepartmentEdit, setModalDepartmentEdit);
     } catch (error) {
@@ -79,7 +79,6 @@ export const ModalProvider = ({ children }: any) => {
 
   async function departmentRemove(departmentData: any) {
     const token = localStorage.getItem("token");
-    console.log(departmentData);
     try {
       await api.delete(`/departments/delete/${departmentData.id}`, {
         headers: {
