@@ -19,8 +19,12 @@ export const UserProvider = ({ children }: any): JSX.Element => {
   const [registeredUsers, setRegisteredUsers] = useState(
     [] as Array<iEmployeesUsers>
   );
-  const [usersOutOfWork, setUsersOutOfWork] = useState([] as any);
-  const [dataOfUserLogged, setDataOfUserLogged] = useState({} as any);
+  const [usersOutOfWork, setUsersOutOfWork] = useState(
+    [] as Array<iNotEmployees>
+  );
+  const [dataOfUserLogged, setDataOfUserLogged] = useState(
+    {} as iDataUserDefault
+  );
 
   const { getDepartmentById, getCompanyById }: any = useContext(CompanyContext);
   const { userIsAuthenticated, isAdmin }: any = useContext(AuthContext);
@@ -71,7 +75,7 @@ export const UserProvider = ({ children }: any): JSX.Element => {
     }
   }
 
-  async function userRegister(data: iRegisterUserData) {
+  async function userRegister(data: iRegisterUserData): Promise<void> {
     try {
       const request: iReturnRegisteredUserData = (
         await api.post(`/employees/create`, data)
@@ -82,7 +86,7 @@ export const UserProvider = ({ children }: any): JSX.Element => {
     }
   }
 
-  async function userLogin(data: iDataUserLogin) {
+  async function userLogin(data: iDataUserLogin): Promise<void> {
     try {
       const request: iReturnDataUserLogin = (
         await api.post(`/auth/login`, data)

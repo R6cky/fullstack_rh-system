@@ -7,7 +7,7 @@ import { AuthContext } from "../../../context/ContextAuth";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { iLogin } from "../../../interfaces/interfacesUsers";
+import { iDataUserLogin } from "../../../interfaces/interfacesUsers";
 
 const schema: any = yup
   .object({
@@ -44,7 +44,7 @@ export const Login = (): JSX.Element => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const submit = (data: iLogin | any): void => {
+  const submit = (data: iDataUserLogin): void => {
     userLogin(data);
   };
 

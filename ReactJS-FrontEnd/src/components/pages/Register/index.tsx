@@ -6,12 +6,8 @@ import { UserContext } from "../../../context/ContextUsers";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { iRegisterUserData } from "../../../interfaces/interfacesUsers";
 
-export interface iRegister {
-  name: string;
-  email: string;
-  password: string;
-}
 const schema = yup
   .object({
     name: yup
@@ -39,12 +35,7 @@ export const Register = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const submit = (data: iRegister) => {
-    data = {
-      name: data.name,
-      email: data.email,
-      password: data.password,
-    };
+  const submit = (data: iRegisterUserData) => {
     userRegister(data);
   };
 

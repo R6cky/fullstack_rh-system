@@ -5,12 +5,7 @@ import { CompanyContext } from "../../../context/ContextCompanies";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-
-type tDepartmentCreate = {
-  name: string;
-  description: string;
-  company_id: string;
-};
+import { iDepartmentCreate } from "../../../interfaces/interfacesModals";
 
 const schema = yup
   .object({
@@ -42,7 +37,7 @@ export const DepartmentCreate = (): JSX.Element => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const submit = (data: tDepartmentCreate): void => {
+  const submit = (data: iDepartmentCreate): void => {
     departmentCreate(data);
   };
 
