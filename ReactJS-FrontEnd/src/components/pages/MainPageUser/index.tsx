@@ -9,7 +9,8 @@ import { AuthContext } from "../../../context/ContextAuth";
 
 export const MainPageUser = () => {
   const { getDataOfUserLogged, dataOfUserLogged } = useContext(UserContext);
-  const { dataDepartmentById, dataCompanyById } = useContext(CompanyContext);
+  const { dataDepartmentById, dataCompanyById }: any =
+    useContext(CompanyContext);
   const { isAdmin, userIsAuthenticated, logout } = useContext(AuthContext);
 
   const navigate = useNavigate();

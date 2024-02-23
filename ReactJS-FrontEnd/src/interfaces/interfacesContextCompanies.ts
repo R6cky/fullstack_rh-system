@@ -19,3 +19,5 @@ export interface iDepartments {
     company_id: string
     company: Array<iCompanies>
 }
+
+

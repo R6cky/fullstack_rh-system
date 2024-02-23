@@ -7,15 +7,9 @@ import { AuthContext } from "../../../context/ContextAuth";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { iLogin } from "../../../interfaces/interfacesUsers";
 
-// Type Script
-
-type tLogin = {
-  email: string;
-  password: string;
-};
-
-const schema = yup
+const schema: any = yup
   .object({
     email: yup
       .string()
@@ -29,10 +23,10 @@ const schema = yup
   })
   .required();
 
-export const Login = () => {
+export const Login = (): JSX.Element => {
   const { userLogin } = useContext(UserContext);
   const { userIsAuthenticated, isAdmin } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const navigate: any = useNavigate();
 
   useEffect(() => {
     if (userIsAuthenticated() && isAdmin() === "true") {
@@ -50,7 +44,7 @@ export const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const submit = (data: tLogin) => {
+  const submit = (data: iLogin | any): void => {
     userLogin(data);
   };
 

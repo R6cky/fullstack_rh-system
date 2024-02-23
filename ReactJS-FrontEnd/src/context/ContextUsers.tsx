@@ -6,18 +6,18 @@ import { AuthContext } from "./ContextAuth";
 
 export const UserContext = createContext({} as any);
 
-export const UserProvider = ({ children }: any) => {
+export const UserProvider = ({ children }: any): JSX.Element => {
   const [registeredUsers, setRegisteredUsers] = useState([] as any);
   const [usersOutOfWork, setUsersOutOfWork] = useState([] as any);
   const [dataOfUserLogged, setDataOfUserLogged] = useState({} as any);
 
-  const { getDepartmentById, getCompanyById } = useContext(CompanyContext);
-  const { userIsAuthenticated, isAdmin } = useContext(AuthContext);
+  const { getDepartmentById, getCompanyById }: any = useContext(CompanyContext);
+  const { userIsAuthenticated, isAdmin }: any = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const getRegisteredUser = async () => {
-    const token = localStorage.getItem("token");
+  const getRegisteredUser = async (): Promise<void> => {
+    const token: string | null = localStorage.getItem("token");
 
     try {
       const request = await api.get("/employees/readAll", {
