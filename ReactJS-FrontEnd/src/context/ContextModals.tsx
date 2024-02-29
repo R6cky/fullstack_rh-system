@@ -151,7 +151,7 @@ export const ModalProvider = ({ children }: any) => {
       });
       await getRegisteredUser();
       activateModal(modalUserDelete, setModalUserDelete);
-      toast.success("Descadastrado de usuário realizado com sucesso!");
+      toast.success("Usuário descadastrado com sucesso!");
     } catch (error) {
       console.log(error);
     }
