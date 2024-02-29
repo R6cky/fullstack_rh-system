@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { StyleRegisteredUserCard } from "./style";
 import { CompanyContext } from "../../../../../context/ContextCompanies";
 import { ModalContext } from "../../../../../context/ContextModals";
-import { UserEdit } from "../../../../Modals/UserEdit";
+import { iCompanies } from "../../../../../interfaces/interfacesContextCompanies";
 
-export const RegisteredUserCard = ({ user }: any) => {
+export const RegisteredUserCard = ({ user }: any): JSX.Element => {
   const { companies } = useContext(CompanyContext);
   const {
     activateModal,
@@ -15,7 +15,7 @@ export const RegisteredUserCard = ({ user }: any) => {
   } = useContext(ModalContext);
   let companyName: String[] = [];
 
-  companies.forEach((element: any) => {
+  companies.forEach((element: iCompanies) => {
     if (element.id === user.company_id) {
       companyName.push(element.name);
     }

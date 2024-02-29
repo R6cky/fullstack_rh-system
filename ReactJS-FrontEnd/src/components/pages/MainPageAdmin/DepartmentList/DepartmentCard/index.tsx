@@ -2,8 +2,9 @@ import { useContext, useState } from "react";
 import { StyleDepartmentCard } from "./style";
 import { ModalContext } from "../../../../../context/ContextModals";
 import { CompanyContext } from "../../../../../context/ContextCompanies";
+import { iCompanies } from "../../../../../interfaces/interfacesContextCompanies";
 
-export const DepartmentCard = ({ department }: any) => {
+export const DepartmentCard = ({ department }: any): JSX.Element => {
   const {
     activateModal,
     modalDepartmentRemove,
@@ -20,7 +21,7 @@ export const DepartmentCard = ({ department }: any) => {
       <div className="left-data">
         <h4 className="title-department">{department.name}</h4>
         <p className="description-department">{department.description}</p>
-        {companies.map((company: any) =>
+        {companies.map((company: iCompanies) =>
           company.id === department.company_id ? (
             <span className="department-owner" key={company.id}>
               {company.name}

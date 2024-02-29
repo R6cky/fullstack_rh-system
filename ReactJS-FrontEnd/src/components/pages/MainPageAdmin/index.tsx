@@ -10,7 +10,7 @@ import { ModalContext } from "../../../context/ContextModals";
 import { DepartmentCreate } from "../../Modals/DepartmentCreate";
 import { AuthContext } from "../../../context/ContextAuth";
 
-export const MainPageAdmin = () => {
+export const MainPageAdmin = (): JSX.Element => {
   const { getCompanies, companies, getDepartmentByCompany } =
     useContext(CompanyContext);
   const { getRegisteredUser } = useContext(UserContext);
