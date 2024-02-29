@@ -7,20 +7,23 @@ import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/ContextUsers.tsx";
 import { ModalProvider } from "./context/ContextModals.tsx";
 import { AuthProvider } from "./context/ContextAuth.tsx";
+import { ToastProvider } from "./context/ContextToastify.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <GlobalStyles />
-      <AuthProvider>
-        <CompanyProvider>
-          <UserProvider>
-            <ModalProvider>
-              <App />
-            </ModalProvider>
-          </UserProvider>
-        </CompanyProvider>
-      </AuthProvider>
+      <ToastProvider>
+        <AuthProvider>
+          <CompanyProvider>
+            <UserProvider>
+              <ModalProvider>
+                <App />
+              </ModalProvider>
+            </UserProvider>
+          </CompanyProvider>
+        </AuthProvider>
+      </ToastProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
