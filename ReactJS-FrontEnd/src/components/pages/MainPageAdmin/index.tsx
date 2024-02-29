@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Footer } from "../../Footer";
 import { DepartmentList } from "./DepartmentList";
 import { RegisteredUserlist } from "./RegisteredUserList";
