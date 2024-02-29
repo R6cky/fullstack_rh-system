@@ -23,7 +23,7 @@ const schema = yup
   })
   .required();
 
-export const UserEdit = () => {
+export const UserEdit = (): JSX.Element => {
   const {
     modalUserEdit,
     setModalUserEdit,

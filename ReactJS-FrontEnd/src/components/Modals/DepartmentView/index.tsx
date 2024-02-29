@@ -4,8 +4,13 @@ import { StyleDepartmentView } from "./style";
 import { ModalContext } from "../../../context/ContextModals";
 import { UserContext } from "../../../context/ContextUsers";
 import { CompanyContext } from "../../../context/ContextCompanies";
+import {
+  iCompanies,
+  iDepartments,
+} from "../../../interfaces/interfacesContextCompanies";
+import { iNotEmployees } from "../../../interfaces/interfacesUsers";
 
-export const DepartmentView = () => {
+export const DepartmentView = (): JSX.Element => {
   const {
     activateModal,
     modalDepartmentView,
@@ -17,9 +22,9 @@ export const DepartmentView = () => {
 
   const { getUserOutOfWork, usersOutOfWork } = useContext(UserContext);
 
-  const [data, setData] = useState({} as any);
+  const [data, setData] = useState({} as iDepartments);
 
-  const [idToHire, setidToHire] = useState({});
+  const [idToHire, setidToHire] = useState("" as string);
 
   useEffect(() => {
     getUserOutOfWork();
@@ -42,7 +47,7 @@ export const DepartmentView = () => {
         <div className="header-modal">
           <h3 className="department-name">{data.name}</h3>
           <span className="department-description">{data.description}</span>
-          {companies.map((company: any) =>
+          {companies.map((company: iCompanies) =>
             company.id === data.company_id ? (
               <span className="department-owner" key={company.id}>
                 {company.name}
@@ -56,7 +61,7 @@ export const DepartmentView = () => {
         <div className="select-area">
           <select name="" id="" onChange={(e) => setidToHire(e.target.value)}>
             <option value="">Selecionar usuário</option>
-            {usersOutOfWork.map((user: any) => {
+            {usersOutOfWork.map((user: iNotEmployees) => {
               return (
                 <option value={user.id} key={user.id}>
                   {user.name}

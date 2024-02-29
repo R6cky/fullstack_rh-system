@@ -4,8 +4,9 @@ import { StyleNotEmployeeList } from "./style";
 import { ModalContext } from "../../../../context/ContextModals";
 import { UserContext } from "../../../../context/ContextUsers";
 import { EmployeeRemove } from "../../EmployeeRemove";
+import { iDataUserDefault } from "../../../../interfaces/interfacesUsers";
 
-export const NotEmployeeList = () => {
+export const NotEmployeeList = (): JSX.Element => {
   const { dataRequest, modalUserEmployeeRemove } = useContext(ModalContext);
   const { registeredUsers } = useContext(UserContext);
 
@@ -17,7 +18,7 @@ export const NotEmployeeList = () => {
 
   return (
     <StyleNotEmployeeList>
-      {registeredUsers.map((user: any) =>
+      {registeredUsers.map((user: iDataUserDefault) =>
         user.department_id === data.id ? (
           <NotEmployeeCard key={user.id} userData={user} />
         ) : null

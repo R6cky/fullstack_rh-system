@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { StyleUserRemove } from "./style";
 import { ModalContext } from "../../../context/ContextModals";
 
-export const RemoveUser = () => {
+export const RemoveUser = (): JSX.Element => {
   const {
     activateModal,
     modalUserDelete,

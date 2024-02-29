@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { StyleNotEmployeeCard } from "./style";
 import { CompanyContext } from "../../../../../context/ContextCompanies";
 import { ModalContext } from "../../../../../context/ContextModals";
+import { iCompanies } from "../../../../../interfaces/interfacesContextCompanies";
 
 export const NotEmployeeCard = ({ userData }: any) => {
   const { modalUserEmployeeRemove, setModalUserEmployeeRemove, activateModal } =
@@ -11,7 +12,7 @@ export const NotEmployeeCard = ({ userData }: any) => {
     <StyleNotEmployeeCard>
       <div className="user-data">
         <h3 className="user-name">{userData.name}</h3>
-        {companies.map((company: any) =>
+        {companies.map((company: iCompanies) =>
           company.id === userData.company_id ? (
             <span className="user-name" key={company.id}>
               {company.name}
