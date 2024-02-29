@@ -10,6 +10,7 @@ import {
   iUserEdit,
 } from "../interfaces/interfacesModals";
 import { iDepartments } from "../interfaces/interfacesContextCompanies";
+import { toast } from "react-toastify";
 
 export const ModalContext = createContext({} as any);
 
@@ -68,6 +69,7 @@ export const ModalProvider = ({ children }: any) => {
       ).data;
       setDepartmentsByCompany([...departmentsByCompany, request]);
       activateModal(modalDepartmentCreate, setModalDepartmentCreate);
+      toast.success("Departamento criado com sucesso!");
     } catch (error) {
       console.log(error);
     }
@@ -89,6 +91,7 @@ export const ModalProvider = ({ children }: any) => {
       );
       setDepartmentsByCompany(departmentsByCompanyUpdated);
       activateModal(modalDepartmentEdit, setModalDepartmentEdit);
+      toast.success("Departamento editado com sucesso!");
     } catch (error) {
       console.log(error);
     }
@@ -109,6 +112,7 @@ export const ModalProvider = ({ children }: any) => {
         await getDepartmentByCompany(departmentData.company_id);
       setDepartmentsByCompany(departmentsByCompanyUpdated);
       activateModal(modalDepartmentRemove, setModalDepartmentRemove);
+      toast.success("Departamento removido com sucesso!");
     } catch (error) {
       console.log(error);
     }
@@ -127,8 +131,9 @@ export const ModalProvider = ({ children }: any) => {
         }
       );
       const reqJson: iReturnUserEdit = request.data;
-      await getRegisteredUser();
+      getRegisteredUser();
       activateModal(modalUserEdit, setModalUserEdit);
+      toast.success("Usuário editado com sucesso!");
     } catch (error) {
       console.log(error);
     }
@@ -146,6 +151,7 @@ export const ModalProvider = ({ children }: any) => {
       });
       await getRegisteredUser();
       activateModal(modalUserDelete, setModalUserDelete);
+      toast.success("Descadastrado de usuário realizado com sucesso!");
     } catch (error) {
       console.log(error);
     }
@@ -168,6 +174,7 @@ export const ModalProvider = ({ children }: any) => {
       getRegisteredUser();
       getUserOutOfWork();
       activateModal(modalUserEmployeeRemove, setModalUserEmployeeRemove);
+      toast.success("Demissão realizada com sucesso!");
     } catch (error) {
       console.log(error);
     }
@@ -187,7 +194,7 @@ export const ModalProvider = ({ children }: any) => {
       ).data;
       getUserOutOfWork();
       getRegisteredUser();
-      console.log(request);
+      toast.success("Contratação realizada com sucesso!");
     } catch (error) {
       console.log(error);
     }

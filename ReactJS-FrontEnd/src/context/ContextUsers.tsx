@@ -12,6 +12,7 @@ import {
   iReturnDataUserLogin,
   iReturnRegisteredUserData,
 } from "../interfaces/interfacesUsers";
+import { toast } from "react-toastify";
 
 export const UserContext = createContext({} as any);
 
@@ -81,6 +82,7 @@ export const UserProvider = ({ children }: any): JSX.Element => {
         await api.post(`/employees/create`, data)
       ).data;
       navigate("/login");
+      toast.success("Usuário cadastrado com sucesso!");
     } catch (error) {
       console.log(error);
     }
@@ -93,12 +95,14 @@ export const UserProvider = ({ children }: any): JSX.Element => {
       ).data;
       localStorage.setItem("token", request.authToken);
       localStorage.setItem("isAdmin", JSON.stringify(request.isAdm));
+
       if (userIsAuthenticated() && isAdmin() === "false") {
         navigate("/homeUser");
       }
       if (userIsAuthenticated() && isAdmin() === "true") {
         navigate("/homeAdmin");
       }
+      toast.success("Bem vindo!");
     } catch (error) {
       console.log(error);
     }

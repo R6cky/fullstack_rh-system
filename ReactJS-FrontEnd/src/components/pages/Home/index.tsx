@@ -6,7 +6,6 @@ import { useContext, useEffect, useState } from "react";
 import { CompanyContext } from "../../../context/ContextCompanies";
 import ImgHome from "../../../assets/main-home.jpg";
 import { iCategories } from "../../../interfaces/interfacesContextCompanies";
-import { ToastContext } from "../../../context/ContextToastify";
 import { ToastComponent } from "../../ToastContainer/ToastContainer";
 
 export const Home = (): JSX.Element => {
@@ -17,8 +16,6 @@ export const Home = (): JSX.Element => {
   useEffect(() => {
     getSectors();
   }, []);
-
-  const { notify } = useContext(ToastContext);
 
   return (
     <StyleHome>
@@ -36,7 +33,6 @@ export const Home = (): JSX.Element => {
             </Link>
           </button>
         </div>
-        <button onClick={notify}>TOAST</button>
         <ToastComponent />
       </header>
       <div className="container-data">
