@@ -1,8 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { StyleDepartmentCard } from "./style";
 import { ModalContext } from "../../../../../context/ContextModals";
 import { CompanyContext } from "../../../../../context/ContextCompanies";
 import { iCompanies } from "../../../../../interfaces/interfacesContextCompanies";
+import { MdEditDocument } from "react-icons/md";
+import { FaEye } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 export const DepartmentCard = ({ department }: any): JSX.Element => {
   const {
@@ -34,9 +37,9 @@ export const DepartmentCard = ({ department }: any): JSX.Element => {
 
       <div className="right-data">
         <span className="view">
-          <img
-            src=""
-            alt="img-view"
+          <FaEye
+            title="Visualizar departamento"
+            className="department-view-icon"
             onClick={() =>
               activateModal(
                 modalDepartmentView,
@@ -47,9 +50,9 @@ export const DepartmentCard = ({ department }: any): JSX.Element => {
           />
         </span>
         <span className="edit-department">
-          <img
-            src=""
-            alt="edit"
+          <MdEditDocument
+            className="edit-department-icon"
+            title="Editar departamento"
             onClick={() =>
               activateModal(
                 modalDepartmentEdit,
@@ -60,9 +63,9 @@ export const DepartmentCard = ({ department }: any): JSX.Element => {
           />
         </span>
         <span className="remove-department">
-          <img
-            src=""
-            alt="remove"
+          <MdDelete
+            className="remove-department-icon"
+            title="Deletar departamento"
             onClick={() =>
               activateModal(
                 modalDepartmentRemove,
