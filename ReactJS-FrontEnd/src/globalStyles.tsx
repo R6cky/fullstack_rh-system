@@ -42,7 +42,5 @@ export const GlobalStyles: any = createGlobalStyle`
         --oranje:#FF5630;
         --purple:#7A1CBD;
 
-        
-
     }
 `;
