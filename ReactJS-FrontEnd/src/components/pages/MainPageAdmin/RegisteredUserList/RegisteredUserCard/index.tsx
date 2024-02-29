@@ -5,7 +5,6 @@ import { ModalContext } from "../../../../../context/ContextModals";
 import { iCompanies } from "../../../../../interfaces/interfacesContextCompanies";
 import { FaUserEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { FaEye } from "react-icons/fa6";
 
 export const RegisteredUserCard = ({ user }: any): JSX.Element => {
   const { companies } = useContext(CompanyContext);
