@@ -47,15 +47,18 @@ export const StyleHome = styled.div`
     }
 
     .header-default-page{
+        border-bottom: solid var(--purple) 0.1px;
+        border-radius: 5px;
         width: 100%;
-        max-width: 100%;
+        max-width: 90%;
         height: 5rem;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        padding: 0px 50px;
         align-items: center;
-        -webkit-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
-        box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
+        margin-bottom: 50px;
+       
+      
     }
 
 
@@ -73,12 +76,20 @@ export const StyleHome = styled.div`
                 font-size: 1.2rem;
 
                 :visited{
-                    color: var(--white);
+                    color: var(--purple);
                 }
-                background-color: var(--purple);
+                :hover:nth-child(1) {
+                    text-decoration: none;
+                    border-bottom: 3px solid var(--purple);
+                    padding-bottom: 0px;
+                    color: var(--purple);
+              
+                }
+
+                background: none;
                 font-weight: bold;
             }
-    }
+        }
 
 
 `

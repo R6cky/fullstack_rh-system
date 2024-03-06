@@ -145,14 +145,8 @@ export const StyleLogin = styled.div`
                     }
                 }
             }
-        }
 
-
-
-    //ANIMATION CSS 
-
-         
-    -webkit-animation: slide-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) alternate-reverse both;
+            -webkit-animation: slide-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) alternate-reverse both;
 	    animation: slide-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) alternate-reverse both;
 
             /* ----------------------------------------------
@@ -182,11 +176,20 @@ export const StyleLogin = styled.div`
             -webkit-transform: translateY(0);
                     transform: translateY(0);
         }
+
         100% {
             -webkit-transform: translateY(-100px);
                     transform: translateY(-100px);
         }
+        
+    }
         }
 
+
+
+    //ANIMATION CSS 
+
+         
+    
 
 `
