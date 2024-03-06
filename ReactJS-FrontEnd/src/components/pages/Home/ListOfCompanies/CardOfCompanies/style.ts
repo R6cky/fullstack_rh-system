@@ -27,8 +27,6 @@ export const StyleCardOfCompanies = styled.li`
         align-items: center;
         justify-content: center;
         font-size: 10px;
-
-     
     }
 
 `

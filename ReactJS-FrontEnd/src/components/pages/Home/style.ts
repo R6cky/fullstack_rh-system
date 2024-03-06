@@ -20,6 +20,7 @@ export const StyleHome = styled.div`
         }
     
         .container-data-right{
+            border: solid var(--purple) 0.1px;
             
             select{
                 font-size: 18px;
@@ -37,11 +38,6 @@ export const StyleHome = styled.div`
                
             }
 
-            
-
-            -webkit-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
-            -moz-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
-            box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
         }
     
     }
