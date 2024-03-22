@@ -2,26 +2,26 @@ import styled from "styled-components";
 
 export const StyleLogin = styled.div`
 
-
     display: flex;
     flex-direction: column;
     gap: 40px;
     align-items: center;
 
         
-.header-default-page{
-        width: 90rem;
-        max-width: 100%;
+    .header-default-page{
+        border-bottom: solid var(--purple) 0.1px;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 90%;
         height: 5rem;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        padding: 0px 50px;
         align-items: center;
-        -webkit-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
-        box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
+        margin-bottom: 50px;
+       
+      
     }
-
-    
 
 
     .buttons-right-area{
@@ -33,18 +33,25 @@ export const StyleLogin = styled.div`
             button{
                 width: 9rem;
                 height: 3rem;
-                background-color: var(--purple);
-                color: var(--white);
-                border-radius: 4px;
                 border: none;
+                border-radius: 4px;
                 font-size: 1.2rem;
-                font-weight: bold;
+
                 :visited{
-                    color: var(--white);
+                    color: var(--purple);
+                }
+                :hover:nth-child(1) {
+                    text-decoration: none;
+                    border-bottom: 3px solid var(--purple);
+                    padding-bottom: 0px;
+                    color: var(--purple);
+              
                 }
 
+                background: none;
+                font-weight: bold;
             }
-    }
+        }
 
 
     .login-container{

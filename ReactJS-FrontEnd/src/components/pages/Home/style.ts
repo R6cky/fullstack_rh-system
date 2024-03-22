@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyleHome = styled.div`
-
+   
     width: 100%;
     height: 100%;
 
@@ -53,8 +53,6 @@ export const StyleHome = styled.div`
         padding: 0px 50px;
         align-items: center;
         margin-bottom: 50px;
-       
-      
     }
 
 

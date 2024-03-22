@@ -9,23 +9,20 @@ export const StyleRegister = styled.div`
     align-items: center;
 
 
-    
-    
-    
-    
     .header-default-page{
-        width: 90rem;
-        max-width: 100%;
+        border-bottom: solid var(--purple) 0.1px;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 90%;
         height: 5rem;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        padding: 0px 50px;
         align-items: center;
-        -webkit-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
-        box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
+        margin-bottom: 50px;
+       
+      
     }
-
-    
 
 
     .buttons-right-area{
@@ -38,17 +35,24 @@ export const StyleRegister = styled.div`
                 width: 9rem;
                 height: 3rem;
                 border: none;
-                font-weight: bold;
                 border-radius: 4px;
                 font-size: 1.2rem;
-                background-color: var(--purple);
-                color: var(--white);
+
                 :visited{
-                    color: var(--white);
+                    color: var(--purple);
+                }
+                :hover:nth-child(1) {
+                    text-decoration: none;
+                    border-bottom: 3px solid var(--purple);
+                    padding-bottom: 0px;
+                    color: var(--purple);
+              
                 }
 
+                background: none;
+                font-weight: bold;
             }
-    }
+        }
 
 
         .register-container{

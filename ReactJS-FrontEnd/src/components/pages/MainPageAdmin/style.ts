@@ -3,37 +3,44 @@ import styled from "styled-components";
 export const StyleMainPageAdmin = styled.div`
 
 .header-default-page{
-        width: 90rem;
-        max-width: 100%;
+    border-bottom: solid var(--purple) 0.1px;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 90%;
         height: 5rem;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        padding: 0px 50px;
         align-items: center;
-        -webkit-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
-        box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
+        margin-bottom: 50px;
     }
 
     .buttons-right-area{
         width: 300px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        text-decoration: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
 
 
-    .logout-button{
-        width: 9rem;
-        height: 3rem;
-        border:  none;
-        background: var(--purple);
-        color: var(--white);
-        font-weight: bold;
-        border-radius: 4px;
-        font-size: 1.2rem;
+        .logout-button{
+                width: 9rem;
+                height: 3rem;
+                border: none;
+                border-radius: 4px;
+                font-size: 1.2rem;
+                color: var(--purple);
         
-        
-
+                :visited{
+                    color: var(--purple);
+                }
+                :hover:nth-child(1) {
+                    text-decoration: none;
+                    border-bottom: 3px solid var(--purple);
+                    padding-bottom: 0px;
+                    color: var(--purple);
+                }
+                background: none;
+                font-weight: bold;
         
         a{
             width: 100%;
