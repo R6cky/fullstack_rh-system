@@ -101,6 +101,9 @@ export const StyleMainPageAdmin = styled.div`
             -moz-box-shadow: 0px 1px 5px -3px rgba(0,0,0,0.75);
             box-shadow: 0px 1px 5px -3px rgba(0,0,0,0.75);
 
+            background: var(--purple);
+            color: white;
+
             .title-header-departments{
                 margin-left: 5px;
               
@@ -122,6 +125,19 @@ export const StyleMainPageAdmin = styled.div`
                 font-weight: bold;
             }
         }
+    }
+
+
+    .header-user-list{
+        -webkit-box-shadow: 0px 1px 5px -3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 1px 5px -3px rgba(0,0,0,0.75);
+        box-shadow: 0px 1px 5px -3px rgba(0,0,0,0.75);
+        height:40px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background: var(--purple);
+        color: white;
     }
 
 `

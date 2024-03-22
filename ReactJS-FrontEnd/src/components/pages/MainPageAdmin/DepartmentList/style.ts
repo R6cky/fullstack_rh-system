@@ -8,7 +8,7 @@ export const StyleDepartmentList = styled.ul`
     width: 800px;
     max-width: 100%;
     height: 250px;
-    overflow-y: scroll;
+    overflow-Y: scroll;
     margin: 20px 0px ;
 
 

@@ -9,8 +9,9 @@ export const StyleRegisteredUserlist = styled.ul`
     max-width: 100%;
     height: 250px;
     overflow-y: scroll;
-    margin: 20px 0px ;
+    margin: 40px 0px ;
+    
 
-
+    
     
 `

@@ -89,7 +89,12 @@ export const MainPageAdmin = (): JSX.Element => {
           </div>
           <DepartmentList />
         </div>
+
         <div className="registered-user-list">
+          <div className="header-user-list">
+            <h3 className="title-header-departments">Usuários</h3>
+          </div>
+
           <RegisteredUserlist />
         </div>
       </div>
