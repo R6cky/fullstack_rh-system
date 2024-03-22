@@ -7,10 +7,10 @@ export const StyleDepartmentView = styled.div`
     align-items: center;
     width: 100%;
     max-width: 100%;
-    height: 100vh;
-    position: absolute;
+    height: 100%;
+    position: fixed;
     top: 0px;
-    left: 0;
+    left: 0px;
     background: rgba(0, 0, 0, 0.8);
 
     .close-modal{
