@@ -9,7 +9,6 @@ export  const createCategoryController = async(req: Request, res: Response, next
 
   try {
     const newCategory = await createCategoryService(data, id)
-
     return res.json(newCategory)
   } catch (error) {
     next(error)
@@ -19,7 +18,6 @@ export  const createCategoryController = async(req: Request, res: Response, next
 export const readAllCategoriesController = async(req: Request, res: Response, next: NextFunction) => {
   try {
     const allCategories = await readAllCategoriesService()
-
     return res.send(allCategories)
   } catch (error) {
     next(error)
