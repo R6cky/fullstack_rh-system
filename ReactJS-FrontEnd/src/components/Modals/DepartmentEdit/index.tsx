@@ -33,7 +33,7 @@ export const DepartmentEdit = (): JSX.Element => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const submit = (data: iDepartmentEdit): void => {
+  const submit = (data: iDepartmentEdit): SubmitHandler => {
     const id: string = dataRequest.id;
     departmentEdit(id, data);
   };
