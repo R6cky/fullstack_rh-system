@@ -12,6 +12,7 @@ interface iDepartmentEdit {
 
 const schema = yup
   .object({
+    id: yup.string(),
     description: yup
       .string()
       .required("Campo obrigatório")
@@ -33,7 +34,7 @@ export const DepartmentEdit = (): JSX.Element => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const submit = (data: iDepartmentEdit): any => {
+  const submit = (data: iDepartmentEdit): void => {
     const id: string = dataRequest.id;
     departmentEdit(id, data);
   };
