@@ -49,7 +49,7 @@ export const Home = (): JSX.Element => {
             })}
           </select>
           <h3 className="list-title">Lista de empresas</h3>
-          <ListOfCompanies sector={dataSector} />
+          {sectors.length > 0 ? <ListOfCompanies sector={dataSector} /> : null}
         </div>
       </div>
       <Footer />
