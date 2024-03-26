@@ -22,11 +22,9 @@ export const CompanyProvider = ({ children }: any) => {
 
   const getCompanies = async (): Promise<void> => {
     try {
-      setLoading(true);
       const request = await api.get("/companies/readAll");
       const reqJson: Array<iCompanies> = request.data;
       setCompanies(reqJson);
-      setLoading(false);
     } catch (error) {
       console.log(error);
     }
