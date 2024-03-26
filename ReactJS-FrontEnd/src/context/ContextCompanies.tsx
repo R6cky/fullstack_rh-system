@@ -5,6 +5,8 @@ import {
   iCompanies,
   iDepartments,
 } from "../interfaces/interfacesContextCompanies";
+import { LoadContext } from "./ContextLoading";
+import { useContext } from "react";
 
 export const CompanyContext = createContext({} as any);
 
@@ -16,12 +18,15 @@ export const CompanyProvider = ({ children }: any) => {
   const [sectors, setSectors] = useState([] as iCategories[]);
   const [dataCompanyById, setDataCompanyById] = useState({} as any);
   const [dataDepartmentById, setDataDepartmentById] = useState({} as any);
+  const { setLoading }: any = useContext(LoadContext);
 
   const getCompanies = async (): Promise<void> => {
     try {
+      setLoading(true);
       const request = await api.get("/companies/readAll");
       const reqJson: Array<iCompanies> = request.data;
       setCompanies(reqJson);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }

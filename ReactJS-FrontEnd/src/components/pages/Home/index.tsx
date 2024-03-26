@@ -6,9 +6,11 @@ import { useContext, useEffect, useState } from "react";
 import { CompanyContext } from "../../../context/ContextCompanies";
 import ImgHome from "../../../assets/main-home.jpg";
 import { iCategories } from "../../../interfaces/interfacesContextCompanies";
+//import { LoadContext } from "../../../context/ContextLoading";
 
 export const Home = (): JSX.Element => {
   const { sectors, getSectors }: any = useContext(CompanyContext);
+  //const { loading }: any = useContext(LoadContext);
 
   const [dataSector, setDataSector] = useState("" as string);
 
@@ -49,7 +51,11 @@ export const Home = (): JSX.Element => {
             })}
           </select>
           <h3 className="list-title">Lista de empresas</h3>
-          {sectors.length > 0 ? <ListOfCompanies sector={dataSector} /> : null}
+          {sectors.length > 0 ? (
+            <ListOfCompanies sector={dataSector} />
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </div>
       <Footer />
