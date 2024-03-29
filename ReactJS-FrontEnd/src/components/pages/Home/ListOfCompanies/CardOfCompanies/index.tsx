@@ -7,7 +7,7 @@ export const CardOfCompanies = ({ company }: any): JSX.Element => {
   const { sectors }: any = useContext(CompanyContext);
   return (
     <StyleCardOfCompanies>
-      <h4 className="company-name">{company.name}</h4>
+      <h4 className="company-name-card">{company.name}</h4>
       {sectors.map((sector: iCategories) =>
         sector.id === company.category_id ? (
           <h5 className="sector-area" key={sector.id}>

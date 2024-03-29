@@ -16,15 +16,17 @@ export const StyleHome = styled.div`
 
         .container-data-left{
             width: 400px;
-           
+         
         }
     
         .container-data-right{
             border: solid var(--purple) 0.1px;
-            
+            max-width: 100%;
+          
             select{
                 font-size: 18px;
                 width: 26rem;
+                max-width: 100%;
                 height: 3rem;
                 border: solid 1px var(--blue);
                 background-color: var(--purple);
@@ -46,7 +48,7 @@ export const StyleHome = styled.div`
         border-bottom: solid var(--purple) 0.1px;
         border-radius: 5px;
         width: 100%;
-        max-width: 90%;
+        max-width: 100%;
         height: 5rem;
         display: flex;
         justify-content: space-between;
@@ -54,6 +56,8 @@ export const StyleHome = styled.div`
         align-items: center;
         margin-bottom: 50px;
     }
+
+    
 
 
     .buttons-right-area{
@@ -85,5 +89,20 @@ export const StyleHome = styled.div`
             }
         }
 
+
+        @media  (max-width: 768px) {
+            .container-data-left{
+                width: 400px;
+                display: none;
+            }
+
+            .company-name{
+                display: none;
+            }
+
+
+
+
+        }
 
 `

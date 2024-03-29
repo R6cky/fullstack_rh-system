@@ -10,7 +10,7 @@ export const GlobalStyles: any = createGlobalStyle`
         margin: 0px;
         padding: 0px;
         font-family: 'Inter', sans-serif;
-
+        text-align: center;
         body{
             width: 100%;
             height: 100%;
