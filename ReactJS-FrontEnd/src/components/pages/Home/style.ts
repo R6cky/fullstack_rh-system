@@ -3,8 +3,12 @@ import styled from "styled-components";
 export const StyleHome = styled.div`
    
     width: 100%;
-    height: 100%;
-
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     .container-data{
         width: 100%;
         height: 100%;
@@ -16,7 +20,6 @@ export const StyleHome = styled.div`
 
         .container-data-left{
             width: 400px;
-         
         }
     
         .container-data-right{
@@ -48,7 +51,7 @@ export const StyleHome = styled.div`
         border-bottom: solid var(--purple) 0.1px;
         border-radius: 5px;
         width: 100%;
-        max-width: 100%;
+        max-width: 90%;
         height: 5rem;
         display: flex;
         justify-content: space-between;
