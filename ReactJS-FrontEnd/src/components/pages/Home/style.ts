@@ -43,7 +43,7 @@ export const StyleHome = styled.div`
             
 
             .list-title{
-                margin-left: 20px;
+                //margin-left: 20px;
                
             }
 
