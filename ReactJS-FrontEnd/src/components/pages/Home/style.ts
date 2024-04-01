@@ -10,6 +10,7 @@ export const StyleHome = styled.div`
     align-items: center;
     text-align: center;
     justify-content: center;
+    margin: 0px;
     
     .container-data{
         width: 100%;
@@ -43,7 +44,7 @@ export const StyleHome = styled.div`
             
 
             .list-title{
-                //margin-left: 20px;
+                margin-left: 20px;
                
             }
 
@@ -107,6 +108,7 @@ export const StyleHome = styled.div`
             width: 100%;
             max-width: 100%;
             height: 800px;
+            margin: 0px;
 
             .container-data-left{
                 width: 400px;
