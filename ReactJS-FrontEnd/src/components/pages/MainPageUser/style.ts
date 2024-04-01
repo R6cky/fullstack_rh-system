@@ -10,11 +10,10 @@ export const StyleMainPageUser = styled.div`
         border-bottom: solid var(--purple) 0.1px;
         border-radius: 5px;
         width: 100%;
-        max-width: 90%;
+        max-width: 100%;
         height: 5rem;
         display: flex;
         justify-content: space-between;
-        padding: 0px 50px;
         align-items: center;
         margin-bottom: 50px;
     }
@@ -86,7 +85,7 @@ export const StyleMainPageUser = styled.div`
 
         .data-employees{
             width: 100%;
-            max-width: 100%;
+            max-width: 800px;
 
 
             -webkit-box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
@@ -118,12 +117,11 @@ export const StyleMainPageUser = styled.div`
             border-bottom: solid var(--purple) 0.1px;
             border-radius: 5px;
             width: 100%;
-            max-width: 90%;
+            max-width: 100%;
             height: 5rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 50px;
+            justify-content: space-around;
+   
     }
 
             .data-employees{
@@ -136,20 +134,24 @@ export const StyleMainPageUser = styled.div`
             }
 
             .data-employees-header{
-                width: 400px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
 
             .company-name{
-                width:100%;
+                width:200px;
                 max-width: 100%;
                 height: 3rem;
                 font-size: 20px;
                 display: flex;
                 justify-content: center;
                 align-items: center ;
+            }
+
+            .buttons-right-area{
+                width:200px;
+                max-width: 100%;
             }
 
 
