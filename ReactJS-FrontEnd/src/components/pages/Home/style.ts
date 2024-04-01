@@ -109,6 +109,7 @@ export const StyleHome = styled.div`
             max-width: 100%;
             height: 800px;
             margin: 0px;
+            text-align: center;
 
             .container-data-left{
                 width: 400px;
