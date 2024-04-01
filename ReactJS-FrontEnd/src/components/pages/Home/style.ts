@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 export const StyleHome = styled.div`
    
-    width: 100%;
+    width: 100vw;
+    max-width: 100%;
     height: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     justify-content: center;
+    margin: 0px 30px;
     .container-data{
         width: 100%;
         height: 100%;
@@ -51,20 +53,25 @@ export const StyleHome = styled.div`
         border-bottom: solid var(--purple) 0.1px;
         border-radius: 5px;
         width: 100%;
-        max-width: 90%;
+        max-width: 100%;
         height: 5rem;
         display: flex;
         justify-content: space-between;
         padding: 0px 50px;
         align-items: center;
-        margin-bottom: 50px;
     }
 
     
-
+    .company-name{
+            width: 300px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+    }
 
     .buttons-right-area{
             width: 300px;
+            height: 5rem;
             display: flex;
             justify-content: space-around;
             align-items: center;
