@@ -12,14 +12,12 @@ export const StyleLogin = styled.div`
         border-bottom: solid var(--purple) 0.1px;
         border-radius: 5px;
         width: 100%;
-        max-width: 90%;
+        max-width: 100%;
         height: 5rem;
         display: flex;
         justify-content: space-between;
-        padding: 0px 50px;
         align-items: center;
         margin-bottom: 50px;
-       
     }
 
 
@@ -193,7 +191,31 @@ export const StyleLogin = styled.div`
 
 
 
-    //ANIMATION CSS 
+    //RESPONSIVE
+    
+    
+
+            @media  (max-width: 768px) {
+
+            width: 100%;
+            max-width: 100%;
+            height: 800px;
+            margin: 0px;
+            text-align: center;
+
+            .container-data-left{
+                width: 400px;
+                display: none;
+            }
+
+            .company-name{
+                display: none;
+            }
+
+
+
+
+        }
 
          
     

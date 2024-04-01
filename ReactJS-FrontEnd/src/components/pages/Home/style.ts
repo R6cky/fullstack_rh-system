@@ -28,12 +28,12 @@ export const StyleHome = styled.div`
     
         .container-data-right{
             border: solid var(--purple) 0.1px;
-            width: 100%;
+            width: 27rem;
             max-width: 100%;
           
             select{
                 font-size: 18px;
-                width: 26rem;
+                width: 27rem;
                 max-width: 100%;
                 height: 3rem;
                 border: solid 1px var(--blue);
