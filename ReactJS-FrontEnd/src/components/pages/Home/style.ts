@@ -59,7 +59,7 @@ export const StyleHome = styled.div`
         height: 5rem;
         display: flex;
         justify-content: space-between;
-        //padding: 0px 50px;
+        padding: 0px 50px;
         align-items: center;
     }
 
