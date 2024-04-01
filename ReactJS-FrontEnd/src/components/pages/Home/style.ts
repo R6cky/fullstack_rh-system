@@ -10,7 +10,7 @@ export const StyleHome = styled.div`
     align-items: center;
     text-align: center;
     justify-content: center;
-    margin: 0px 30px;
+    
     .container-data{
         width: 100%;
         height: 100%;
@@ -22,10 +22,12 @@ export const StyleHome = styled.div`
 
         .container-data-left{
             width: 400px;
+            max-width: 100%;
         }
     
         .container-data-right{
             border: solid var(--purple) 0.1px;
+            width: 100vw;
             max-width: 100%;
           
             select{
@@ -57,7 +59,7 @@ export const StyleHome = styled.div`
         height: 5rem;
         display: flex;
         justify-content: space-between;
-        padding: 0px 50px;
+        //padding: 0px 50px;
         align-items: center;
     }
 
@@ -101,6 +103,11 @@ export const StyleHome = styled.div`
 
 
         @media  (max-width: 768px) {
+
+            width: 100vw;
+            max-width: 100%;
+            height: 800px;
+
             .container-data-left{
                 width: 400px;
                 display: none;
