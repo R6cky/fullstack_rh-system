@@ -27,7 +27,7 @@ export const StyleHome = styled.div`
     
         .container-data-right{
             border: solid var(--purple) 0.1px;
-            width: 100vw;
+            width: 100%;
             max-width: 100%;
           
             select{
