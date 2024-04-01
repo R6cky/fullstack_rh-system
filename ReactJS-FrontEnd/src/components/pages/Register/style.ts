@@ -13,14 +13,12 @@ export const StyleRegister = styled.div`
         border-bottom: solid var(--purple) 0.1px;
         border-radius: 5px;
         width: 100%;
-        max-width: 90%;
+        max-width: 100%;
         height: 5rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 50px;
-       
-      
     }
 
 

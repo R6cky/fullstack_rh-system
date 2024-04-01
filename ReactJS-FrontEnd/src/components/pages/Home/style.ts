@@ -60,17 +60,10 @@ export const StyleHome = styled.div`
         height: 5rem;
         display: flex;
         justify-content: space-between;
-        padding: 0px;
         align-items: center;
     }
 
-    
-    .company-name{
-            width: 300px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-    }
+  
 
     .buttons-right-area{
             width: 300px;
@@ -119,9 +112,6 @@ export const StyleHome = styled.div`
             .company-name{
                 display: none;
             }
-
-
-
 
         }
 
